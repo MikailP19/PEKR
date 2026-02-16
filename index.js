@@ -8,7 +8,6 @@ document.addEventListener("DOMContentLoaded", () => {
     initCursor();
     initScrollButton();
     initPortfolioFilter();
-    initProcessScroll();
 });
 
 /* ========================= */
@@ -230,38 +229,36 @@ function initPortfolioFilter() {
 
     });
 }
+const rows = document.querySelectorAll('.process-row');
 
-function initProcessStory() {
+function handleScroll() {
+    rows.forEach(row => {
 
-    const steps = document.querySelectorAll(".process-step");
-    const numbers = document.querySelectorAll(".process-number");
-    const progressFill = document.querySelector(".progress-fill");
+        const rect = row.getBoundingClientRect();
+        const windowHeight = window.innerHeight;
+        const progressBar = row.querySelector('.progress-fill');
 
-    const options = {
-        root: null,
-        rootMargin: "0px",
-        threshold: 0.5
-    };
+        // Reveal animatie
+        if (rect.top < windowHeight * 0.85) {
+            row.classList.add('show');
+        }
 
-    const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
+        // Progress berekening
+        if (rect.top < windowHeight && rect.bottom > 0) {
 
-                const index = Number(entry.target.dataset.step);
+            const total = rect.height + windowHeight;
+            const progress = (windowHeight - rect.top) / total;
 
-                // mark active
-                steps.forEach(s => s.classList.remove("active"));
-                numbers.forEach(n => n.classList.remove("active"));
-
-                steps[index].classList.add("active");
-                numbers[index].classList.add("active");
-
-                // progress indicator
-                const percent = (index / (steps.length - 1)) * 100;
-                progressFill.style.height = percent + "%";
-            }
-        });
-    }, options);
-
-    steps.forEach(step => observer.observe(step));
+            const clamped = Math.max(0, Math.min(1, progress));
+            progressBar.style.width = (clamped * 100) + "%";
+        }
+    });
 }
+
+window.addEventListener('scroll', () => {
+    requestAnimationFrame(handleScroll);
+});
+
+window.addEventListener('resize', handleScroll);
+
+handleScroll(); // initial call

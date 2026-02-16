@@ -548,6 +548,7 @@ body {
 
 .diensten-header h2 {
     font-size: 5rem;
+    font-weight: 900;
     margin-bottom: 15px;
     position: relative;
     display: inline-block;
@@ -739,6 +740,7 @@ body {
 .portfolio-header h2 {
     color: #f9f9f9;
     font-size: 5rem;
+    font-weight: 900;
     margin-bottom: 15px;
     position: relative;
     display: inline-block;
@@ -1039,27 +1041,34 @@ body {
     padding: 180px 0;
     background: #f9f9f9;
     position: relative;
+    overflow: hidden;
 }
 
-.process-wrapper {
-    height: 100vh;
-    overflow: hidden; /* voorkomt pagina scroll binnen deze zone */
+.process-section::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("https://grainy-gradients.vercel.app/noise.svg");
+    opacity: 0.05;
+    pointer-events: none;
 }
 
 .process-header {
     text-align: center;
-    margin-bottom: 60px;
+    margin-bottom: 120px;
 }
 
 .process-header h2 {
     color: #242124;
     font-size: 5rem;
+    font-weight: 900;
     margin-bottom: 15px;
     position: relative;
     display: inline-block;
     text-transform: uppercase;
     letter-spacing: 1.5px;
 }
+
 .process-header h2 span {
     color: blueviolet;
     font-size: 0.8em;
@@ -1079,76 +1088,113 @@ body {
     box-shadow: 0 2px 6px rgba(0,0,0,0.15);
 }
 
-.process-header p {
-    color: #242124;
+.process-visual {
+    width: 100%;
 }
 
-.process-left {
-    position: sticky;
-    top: 200px;
-    height: 500px;
+.process-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 100px;
+    margin-bottom: 160px;
+    padding: 0 10%;
+
+    opacity: 0;
+    transform: translateY(80px);
+    transition: all 0.9s cubic-bezier(.77,0,.18,1);
 }
 
-.progress-line {
-    position: absolute;
-    left: 40px;
-    top: 0;
-    width: 2px;
-    height: 100%;
-    background: #24212420;
+.process-row.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.process-row.reverse {
+    flex-direction: row-reverse;
+}
+
+.process-content {
+    flex: 1;
+}
+
+.step-number {
+    font-size: 4rem;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 25px;
+}
+
+.process-content h3 {
+    font-size: 5rem;
+    font-weight: 600;
+    line-height: 1.05;
+    margin-bottom: 30px;
+}
+
+.process-content p {
+    font-size: 1.2rem;
+    max-width: 500px;
+    margin-bottom: 40px;
+}
+
+.process-image {
+    flex: 1;
+    text-align: center;
+}
+
+.process-image img {
+    max-width: 100%;
+    height: auto;
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-18px); }
+    100% { transform: translateY(0); }
+}
+
+/* Progress bar */
+
+.progress-bar {
+    width: 100%;
+    height: 22px;
+    background: #242124;
+    border-radius: 50px;
+    overflow: hidden;
 }
 
 .progress-fill {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 2px;
-    height: 0%;
-    background: #242124;
-    transition: height 0.3s ease;
+    width: 0%;
+    height: 100%;
+    background: greenyellow;
+    border-radius: 50px;
 }
 
-.numbers {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    gap: 80px;
+/* Hover micro interaction */
+
+.process-row:hover {
+    transform: translateY(0) scale(1.02);
 }
 
-.process-number {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: #24212430;
-    position: relative;
-    left: -20px; /* links van de lijn */
-    transition: all 0.4s ease;
-}
+/* Responsive */
 
-.process-number.active {
-    color: #242124;
-    transform: scale(1.2);
-}
+@media (max-width: 992px) {
+    .process-row,
+    .process-row.reverse {
+        flex-direction: column;
+        text-align: center;
+        gap: 60px;
+    }
 
-.process-right {
-    height: 100vh;
-    overflow-y: auto;
-    scroll-behavior: smooth;
-    padding-right: 20px;
-}
-.process-right::-webkit-scrollbar {
-    width: 0px;
-}
+    .process-content h3 {
+        font-size: 3rem;
+    }
 
-.process-step {
-    min-height: 100vh;
-    opacity: 0.3;
-    transform: translateY(40px);
-    transition: all 0.6s ease;
-}
-
-.process-step.active {
-    opacity: 1;
-    transform: translateY(0);
+    .step-number {
+        font-size: 3rem;
+    }
 }
 
 /*.contact-section {
