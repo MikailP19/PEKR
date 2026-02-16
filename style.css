@@ -1,0 +1,1731 @@
+/* Reset en basisinstellingen */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+body {
+    background-color: #f9f9f9;
+    color: #242124;
+    line-height: 1.6;
+}
+/* Kleine minimal dot */
+.cursor-dot {
+    width: 12px;
+    height: 12px;
+    background: blueviolet;
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition:
+            transform 0.15s ease,
+            background 0.3s ease;
+    /* mix-blend-mode: difference; */ /* VERWIJDER DIT */
+}
+
+/* Hover effect */
+.cursor-dot.hover {
+    transform: translate(-50%, -50%) scale(1.5);
+    background: blueviolet; /* blijft altijd blauwviolet */
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Sticky Navbar */
+.navbar {
+    position: sticky;
+    top: 0;
+    background: blueviolet;
+    padding: 1rem 0;
+    z-index: 1000;
+
+    /* Liquid glass effect */
+    backdrop-filter: blur(12px) saturate(180%);
+    -webkit-backdrop-filter: blur(12px) saturate(180%);
+
+    border-bottom: 1px solid rgb(173, 255, 47); /* subtiel lijntje */
+    border-radius: 0; /* kan je ronder maken indien je wil */
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-img {
+    height: 60px;
+    width: auto;
+    display: block;
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+}
+
+.navbar a {
+    color: #f9f9f9;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.navbar a:hover {
+    color: blueviolet;
+}
+
+/* ======= Fullscreen Overlay Menu ======= */
+
+.menu-btn {
+    position: relative; /* nodig voor ::before */
+    overflow: hidden;   /* zorgt dat animatie binnen knop blijft */
+    padding: 12px 24px;
+    background-color: transparent;
+    color: #242124;
+    border: 2px solid #242124;
+    border-radius: 6px;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+    transition: color 0.3s ease, letter-spacing 0.3s ease;
+    display: inline-block;
+}
+/* Smooth fill layer */
+.menu-btn::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: #f9f9f9;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.35s ease;
+    z-index: -1;
+}
+/* Hover */
+.menu-btn:hover::before {
+    transform: scaleX(1);
+}
+.menu-btn:hover {
+    color: #242124; /* zwart bij hover */
+    letter-spacing: 1px;
+}
+.navbar .menu-btn {
+    border: 2px solid #f9f9f9;
+    color: #f9f9f9;
+}
+.navbar .menu-btn:hover {
+    color: #242124; /* zwart op hover */
+}
+.overlay-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: #242124;
+    color: #f9f9f9;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(0.98);
+    transition: all 0.4s ease;
+    z-index: 2000;
+}
+
+.overlay-menu.active {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+}
+
+.overlay-menu .top-bar {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 40px;
+    align-items: center;
+}
+
+.overlay-menu .close-btn {
+    background: transparent;
+    border: 1px solid #f9f9f9;
+    color: #f9f9f9;
+    padding: 6px 12px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.overlay-menu .close-btn:hover {
+    border: 1px solid blueviolet;
+    background-color: blueviolet;
+    color: greenyellow;
+}
+
+.overlay-menu .menu-links {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    transform: translateY(-40px);
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+.overlay-menu .menu-links a {
+    color: #f9f9f9;
+    font-size: 1.5rem;
+    text-decoration: none;
+    transform: rotate(-45deg);
+    transition: color 0.3s;
+}
+
+.overlay-menu .menu-links a:hover {
+    color: greenyellow;
+}
+.menu-links a.active {
+    color: greenyellow;
+    position: relative;
+    transition: color 0.3s ease;
+    font-weight: bold;
+}
+
+.menu-links a.active::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 100%;
+    height: 2px;
+    background-color: greenyellow;
+    transform: scaleX(1);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+}
+
+.menu-links a:hover::after {
+    transform: scaleX(1);
+}
+
+.menu-links a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 100%;
+    height: 2px;
+    background-color: greenyellow;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+}
+
+.overlay-menu .bottom-buttons {
+    padding: 30px;
+    text-align: right;
+}
+
+.overlay-menu .cta {
+    background-color: transparent;
+    color: #f9f9f9;
+    border: 1px solid #f9f9f9;
+    padding: 10px 20px;
+    cursor: pointer;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+/* Animatie */
+@keyframes fadeInUp {
+    to {
+        transform: translateY(0);
+    }
+}
+/* ===== STAGE (blueviolet achtergrond) ===== */
+.hero-stage {
+    height: 200vh;
+    background: blueviolet;
+    position: relative;
+
+    background-image: url("data:image/svg+xml,\
+    <svg xmlns='http://www.w3.org/2000/svg' width='40' height='40'>\
+        <text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-size='18' fill='greenyellow'>✦</text>\
+    </svg>");
+
+    background-size: 40px 40px;
+    animation: patternMove 20s linear infinite;
+}
+
+@keyframes patternMove {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 300px 300px;
+    }
+}
+
+/* ===== Sticky hero ===== */
+.hero-sticky {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ===== Hero image block ===== */
+.hero {
+    width: 100%;
+    height: 100vh;
+    background: url('/assets/Mikail Peker.jpg') center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transition: all 0.2s linear;
+}
+
+/* Content */
+.hero .container {
+    color: white;
+}
+
+.hero .btn {
+    display: inline-block;
+    margin-top: 50px;
+    padding: 14px 32px;
+    border: 1px solid #f9f9f9;
+    color: #f9f9f9;
+    background: transparent;
+    text-decoration: none;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    border-radius: 6px;
+    transition: all 0.35s ease;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+/* Smooth fill effect */
+.hero .btn::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: blueviolet;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.35s ease;
+    z-index: -1;
+}
+
+.hero .btn:hover::before {
+    transform: scaleX(1);
+}
+
+.hero .btn:hover {
+    color: #f9f9f9;
+    letter-spacing: 1px;
+}
+
+/* ===== Next section ===== */
+.next-section {
+    background: white;
+    padding: 120px 20px;
+}
+
+/* ===== Scroll Down Button ===== */
+.scroll-down {
+    position: absolute;
+    bottom: 200px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 55px;
+    height: 55px;
+    border: 1px solid #f9f9f9;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    animation: bounce 2s infinite;
+}
+
+.scroll-down span {
+    display: block;
+    width: 10px;
+    height: 10px;
+    border-right: 2px solid #f9f9f9;
+    border-bottom: 2px solid #f9f9f9;
+    transform: rotate(45deg);
+    margin-top: -5px;
+}
+
+/* Hover */
+.scroll-down:hover {
+    background: blueviolet;
+}
+
+/* Bounce animation */
+@keyframes bounce {
+    0%, 100% { transform: translate(-50%, 0); }
+    50% { transform: translate(-50%, 8px); }
+}
+
+/* ===== ABOUT SECTION ===== */
+
+.about-hero {
+    background: linear-gradient(135deg, #0f0f0f 0%, #1a1a2e 100%);
+    padding: 180px 20px 140px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Subtiele noise / diepte */
+.about-hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 20% 30%, rgba(138, 43, 226, 0.15), transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(255,255,255,0.05), transparent 40%);
+    pointer-events: none;
+}
+
+.about-hero-inner {
+    position: relative;
+    z-index: 2;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.about-hero h1 {
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    font-weight: 800;
+    letter-spacing: -2px;
+    margin-bottom: 20px;
+    color: greenyellow;
+}
+
+.about-hero h1 span {
+    color: blueviolet;
+    font-size: 0.8em;
+}
+
+.about-hero p {
+    font-size: 1.2rem;
+    color: #f9f9f9;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.about-section {
+    background: #0f0f0f;
+    color: #f9f9f9;
+    padding: 120px 20px;
+}
+.about-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+}
+.about-image img {
+    width: 100%;
+    border-radius: 20px;
+    filter: grayscale(100%);
+    transition: 0.4s ease;
+}
+.about-image img:hover {
+    filter: grayscale(0%);
+}
+.about-content h2 {
+    font-size: 42px;
+    margin-bottom: 10px;
+}
+.about-content p {
+    line-height: 1.8;
+    margin-bottom: 30px;
+    color: #f9f9f9;
+}
+.about-btn {
+    display: inline-block;
+    padding: 14px 28px;
+    background: blueviolet;
+    color: #f9f9f9;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: 0.3s ease;
+}
+.about-btn:hover {
+    background: greenyellow;
+    color: #242124;
+}
+/* ===== SKILLS ===== */
+.skills {
+    max-width: 1000px;
+    margin: 100px auto 0;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    gap: 40px;
+    text-align: center;
+}
+.skill {
+    flex: 1;
+    min-width: 100px;
+}
+.circle {
+    --size: 120px;
+    --stroke: 8px;
+    --percent: 100;
+
+    width: var(--size);
+    height: var(--size);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 15px;
+    font-weight: bold;
+    font-size: 18px;
+    position: relative;
+    background:
+            conic-gradient(#adff2f calc(var(--percent) * 1%), #2a2a2a 0);
+}
+
+.circle::before {
+    content: "";
+    position: absolute;
+    width: calc(var(--size) - var(--stroke) * 2);
+    height: calc(var(--size) - var(--stroke) * 2);
+    background: #0f0f0f;
+    border-radius: 50%;
+}
+
+.circle span {
+    position: relative;
+    z-index: 2;
+}
+
+.skill p {
+    color: #f9f9f9;
+}
+/* Scroll Effect Section */
+.fade-in-section {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    padding: 100px 0;
+}
+.fade-in-section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+/* ===== Diensten Section ===== */
+.diensten {
+    background: #f9f9f9;
+    padding: 100px 0;
+}
+
+.diensten-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.diensten-header h2 {
+    font-size: 5rem;
+    margin-bottom: 15px;
+    position: relative;
+    display: inline-block;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+.diensten-header h2 span {
+    color: blueviolet;
+    font-size: 0.8em;
+}
+
+.diensten-header h2 .accent-tag {
+    background-color: greenyellow;
+    color: #242124;
+    font-size: 1.5rem;           /* iets groter voor proportie */
+    font-weight: 700;
+    padding: 6px 14px;
+    border-radius: 50px;
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%) rotate(-10deg);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+.diensten-header p {
+    color: #515151;
+}
+
+/* Diensten grid */
+.diensten-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 40px;
+}
+
+/* Service card */
+.dienst-card {
+    background: white;
+    padding: 40px 30px;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.dienst-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.08);
+}
+.dienst-card:hover .icon-wrapper {
+    background: blueviolet;
+}
+
+.dienst-card:hover .icon-wrapper svg {
+    stroke: greenyellow;
+}
+
+.icon-wrapper {
+    width: 70px;
+    height: 70px;
+    margin: 0 auto 25px auto;
+    border-radius: 10%;
+    background: rgba(138, 43, 226, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.dienst-card:hover .icon-wrapper svg {
+    transform: scale(1.2) rotate(8deg);
+}
+
+.icon-wrapper svg {
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke: blueviolet;
+}
+
+
+.icon-wrapper svg path {
+    stroke-dasharray: 200;
+    stroke-dashoffset: 0;
+}
+
+.dienst-card:hover .icon-wrapper svg path {
+    animation: redraw 0.8s ease forwards;
+}
+
+@keyframes redraw {
+    0% {
+        stroke-dashoffset: 200;
+    }
+    100% {
+        stroke-dashoffset: 100;
+    }
+}
+
+/* Titel */
+.dienst-card h3 {
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+}
+
+/* Beschrijving */
+.dienst-card p {
+    color: #242124;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+/* Luxe knop */
+.dienst-card .btn-dienst {
+    display: inline-block;
+    padding: 10px 24px;
+    border: 1px solid blueviolet;
+    color: blueviolet;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    border-radius: 6px;
+    transition: all 0.35s ease;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+/* Smooth fill effect */
+.dienst-card .btn-dienst::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: blueviolet;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.35s ease;
+    z-index: -1;
+}
+
+.dienst-card .btn-dienst:hover::before {
+    transform: scaleX(1);
+}
+
+.dienst-card .btn-dienst:hover {
+    color: greenyellow;
+    letter-spacing: 1px;
+}
+.dienst-tags {
+    display: flex;
+    flex-direction: column;   /* onder elkaar */
+    align-items: center;      /* horizontaal centreren */
+    gap: 10px;
+    margin: 20px 0 25px;
+}
+
+.dienst-tags span {
+    font-size: 0.85rem;
+    padding: 6px 18px;
+    border-radius: 50px;
+    background: #f9f9f9;
+    color: #242124;
+    border: 1px solid rgba(36, 33, 36, 0.15);
+    font-weight: 500;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.dienst-tags span:hover {
+    background: #242124;
+    color: greenyellow;
+    transform: translateY(-2px);
+}
+
+/* ===== Portfolio Home Section ===== */
+.portfolio-home {
+    padding: 100px 0;
+    background: #242124;
+}
+
+.portfolio-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.portfolio-header h2 {
+    color: #f9f9f9;
+    font-size: 5rem;
+    margin-bottom: 15px;
+    position: relative;
+    display: inline-block;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+.portfolio-header h2 span {
+    color: blueviolet;
+    font-size: 0.8em;
+}
+
+.portfolio-header h2 .accent-tag {
+    background-color: greenyellow;
+    color: #242124;
+    font-size: 1.5rem;
+    font-weight: 700;
+    padding: 6px 14px;
+    border-radius: 50px;
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%) rotate(-10deg);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+.portfolio-header p {
+    color: #f9f9f9;
+}
+
+/* Grid */
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+}
+
+/* Card */
+.portfolio-card {
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    opacity: 1;
+    transition: all 0.3s ease;
+}
+.portfolio-card.is-hiding {
+    opacity: 0;
+    transform: scale(0.9);
+}
+
+.portfolio-card.is-hidden {
+    display: none;
+}
+
+.portfolio-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+}
+
+.portfolio-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+/* Image zone van de card */
+.portfolio-card .img-wrapper {
+    height: 200px;
+    background: #f6f6f6;      /* zachte studio-achtergrond */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;            /* ruimte rond het logo */
+}
+
+/* Afbeelding zelf */
+.portfolio-card .img-wrapper img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;      /* volledige afbeelding zichtbaar */
+}
+
+/* Content */
+.portfolio-content {
+    padding: 20px;
+}
+
+.portfolio-content .category {
+    font-size: 12px;
+    text-transform: uppercase;
+    color: blueviolet;
+    font-weight: 600;
+}
+
+.portfolio-content h3 {
+    margin: 8px 0;
+    font-size: 1.2rem;
+}
+
+.portfolio-content p {
+    font-size: 14px;
+    color: #242124;
+    margin-bottom: 15px;
+}
+
+/* Case button */
+.case-btn {
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    color: blueviolet;
+    transition: 0.3s;
+}
+
+.case-btn:hover {
+    letter-spacing: 1px;
+}
+/* Container rond de button */
+.portfolio-more {
+    text-align: center;
+    margin-top: 40px;
+}
+/* Meer projecten button */
+.portfolio-more .btn {
+    display: inline-block;
+    margin-top: 50px;
+    padding: 14px 32px;
+    border: 1px solid #f9f9f9;
+    color: #f9f9f9;
+    background: transparent;
+    text-decoration: none;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    border-radius: 6px;
+    transition: all 0.35s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Hover effect (smooth fill) */
+.portfolio-more .btn::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: blueviolet;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.35s ease;
+    z-index: -1;
+}
+.portfolio-more .btn:hover::before {
+    transform: scaleX(1);
+}
+.portfolio-more .btn:hover {
+    color: greenyellow;
+}
+.portfolio-more .btn:hover {
+    letter-spacing: 1px;
+}
+/* Filter buttons */
+.portfolio-filter {
+    text-align: center;
+    margin-bottom: 40px;
+}
+.filter-btn {
+    background: transparent;
+    border: 1px solid #f9f9f9;
+    color: #f9f9f9;
+    padding: 10px 20px;
+    margin: 0 10px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.filter-btn:hover {
+    background: blueviolet;
+    border-color: blueviolet;
+}
+.filter-btn.active {
+    background: greenyellow;
+    color: #242124;
+    border-color: greenyellow;
+}
+
+.case-hero {
+    position: relative;
+    height: 75vh;
+    display: flex;
+    align-items: flex-end;
+    padding: 0 60px 80px 60px;
+    color: #f9f9f9;
+
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+/* Donkere overlay */
+.case-hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+}
+
+/* Inner content */
+.case-hero-inner {
+    position: relative;
+    z-index: 2;
+    max-width: 1200px;
+}
+
+/* Grote titel */
+.case-hero h1 {
+    font-size: clamp(3rem, 6vw, 6rem);
+    font-weight: 900;
+    letter-spacing: -1px;
+    margin: 0;
+    text-transform: uppercase;
+}
+.case-weshare {
+    background-image: url('/assets/weshare.jpg');
+}
+.case-pietershofke {
+    background-image: url('/assets/pietershofkewebsite.png');
+}
+.case-websters {
+    background-image: url('/assets/Websters logo.png');
+}
+.case-pxlesports {
+    background-image: url('/assets/pietershofkewebsite.png');
+}
+.case-ahiska {
+    background-image: url('/assets/Ahiska BB.png');
+}
+.case-rein4ced {
+    background-image: url('/assets/Ahiska BB.png');
+}
+.case-bezoek {
+    text-align: center;
+    margin-top: 40px;
+}
+/* Meer projecten button */
+.case-bezoek .btn {
+    display: inline-block;
+    margin-top: 50px;
+    padding: 14px 32px;
+    border: 1px solid blueviolet;
+    color: blueviolet;
+    background: transparent;
+    text-decoration: none;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    border-radius: 6px;
+    transition: all 0.35s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Hover effect (smooth fill) */
+.case-bezoek .btn::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: blueviolet;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.35s ease;
+    z-index: -1;
+}
+.case-bezoek .btn:hover::before {
+    transform: scaleX(1);
+}
+.case-bezoek .btn:hover {
+    color: #f9f9f9;
+}
+.case-bezoek .btn:hover {
+    letter-spacing: 1px;
+}
+
+.case-content {
+    max-width: 1100px;
+    margin: 80px auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    padding: 0 20px;
+}
+.case-text h2 {
+    margin-bottom: 10px;
+    margin-top: 40px;
+}
+.case-images img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+.process-section {
+    padding: 180px 0;
+    background: #f9f9f9;
+    position: relative;
+}
+
+.process-wrapper {
+    height: 100vh;
+    overflow: hidden; /* voorkomt pagina scroll binnen deze zone */
+}
+
+.process-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.process-header h2 {
+    color: #242124;
+    font-size: 5rem;
+    margin-bottom: 15px;
+    position: relative;
+    display: inline-block;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+.process-header h2 span {
+    color: blueviolet;
+    font-size: 0.8em;
+}
+
+.process-header h2 .accent-tag {
+    background-color: greenyellow;
+    color: #242124;
+    font-size: 1.5rem;
+    font-weight: 700;
+    padding: 6px 14px;
+    border-radius: 50px;
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%) rotate(-10deg);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+.process-header p {
+    color: #242124;
+}
+
+.process-left {
+    position: sticky;
+    top: 200px;
+    height: 500px;
+}
+
+.progress-line {
+    position: absolute;
+    left: 40px;
+    top: 0;
+    width: 2px;
+    height: 100%;
+    background: #24212420;
+}
+
+.progress-fill {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 2px;
+    height: 0%;
+    background: #242124;
+    transition: height 0.3s ease;
+}
+
+.numbers {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
+}
+
+.process-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #24212430;
+    position: relative;
+    left: -20px; /* links van de lijn */
+    transition: all 0.4s ease;
+}
+
+.process-number.active {
+    color: #242124;
+    transform: scale(1.2);
+}
+
+.process-right {
+    height: 100vh;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+    padding-right: 20px;
+}
+.process-right::-webkit-scrollbar {
+    width: 0px;
+}
+
+.process-step {
+    min-height: 100vh;
+    opacity: 0.3;
+    transform: translateY(40px);
+    transition: all 0.6s ease;
+}
+
+.process-step.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/*.contact-section {
+    text-align: center;
+    padding: 100px 20px;
+    background-color: #121212;
+    color: #fff;
+}
+
+.contact-section h1 {
+    font-size: 48px;
+    margin-bottom: 10px;
+}
+
+.contact-section p {
+    margin-bottom: 30px;
+    color: #ccc;
+}
+
+.contact-form {
+    max-width: 700px;
+    margin: 0 auto 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.contact-form .form-row {
+    display: flex;
+    gap: 16px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    flex: 1;
+    padding: 14px;
+    border-radius: 8px;
+    border: none;
+    font-size: 16px;
+    background: #1f1f1f;
+    color: #fff;
+}
+
+.contact-form textarea {
+    resize: vertical;
+    height: 140px;
+}
+
+.contact-form button {
+    background-color: #ff6b4a;
+    border: none;
+    padding: 14px;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.contact-form button:hover {
+    background-color: #e65b3b;
+}
+
+.social-icons {
+    margin-top: 40px;
+}
+
+.social-icons a {
+    margin: 0 8px;
+    display: inline-block;
+}
+
+.social-icons img {
+    width: 24px;
+    height: 24px;
+    filter: invert(1);
+    transition: transform 0.2s;
+}
+
+.social-icons img:hover {
+    transform: scale(1.2);
+}
+
+.contact-boxes {
+    margin-top: 60px;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.contact-boxes .box {
+    background: #1f1f1f;
+    padding: 24px;
+    border-radius: 12px;
+    width: 250px;
+    text-align: left;
+    color: #ccc;
+}
+
+.contact-boxes h4 {
+    color: #fff;
+    margin-bottom: 10px;
+}*/
+
+/* ===== Contact Pagina 2 ===== */
+.contact-section {
+    background-color: #121212;
+    color: #f9f9f9;
+    padding: 60px 20px;
+}
+
+.contact-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: start;
+}
+
+.contact-left h1 {
+    font-size: 5rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.contact-left p {
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+}
+
+.social-icons {
+    margin-bottom: 40px;
+}
+
+.social-icons a {
+    color: #fff;
+    font-size: 1.5rem;
+    margin-right: 15px;
+    transition: color 0.3s;
+}
+
+.social-icons a:hover {
+    color: blueviolet;
+}
+
+.contact-form {
+    background-color: #1e1e1e;
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    padding: 15px;
+    border: none;
+    border-radius: 8px;
+    background-color: #2a2a2a;
+    color: #fff;
+}
+
+.contact-form textarea {
+    min-height: 150px;
+}
+
+.contact-form button {
+    background-color: #f9f9f9;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    color: #242124;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    align-self: auto;
+}
+.contact-form button:hover {
+    background-color: greenyellow;
+    color: #242124;
+}
+.privacy-check {
+    font-size: 13px;
+}
+
+/* Info boxes */
+.contact-info {
+    margin-top: 60px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.info-box {
+    background-color: #1e1e1e;
+    padding: 20px;
+    border-radius: 10px;
+}
+.info-box:hover {
+    background-color: blueviolet;
+    color: greenyellow;
+}
+
+.info-box h3 {
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+    text-align: center;
+}
+.info-box p {
+    text-align: center;
+}
+.info-box:hover .icon-wrapper svg {
+    transform: scale(1.2) rotate(8deg);
+}
+
+.info-box svg {
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke: greenyellow;
+}
+
+
+.info-box svg path {
+    stroke-dasharray: 200;
+    stroke-dashoffset: 0;
+}
+
+.info-box:hover .icon-wrapper svg path {
+    animation: redraw 0.8s ease forwards;
+}
+
+@keyframes redraw {
+    0% {
+        stroke-dashoffset: 200;
+    }
+    100% {
+        stroke-dashoffset: 100;
+    }
+}
+
+/* ===== Social Sidebar ===== */
+.social-bar {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-top: 140px;
+    padding-top: 110px;
+    border-top: 1px solid #f9f9f9; /* het streepje */
+}
+
+.social-bar .label {
+    color: #f9f9f9;
+    font-weight: 500;
+}
+
+.social-bar a {
+    color: #f9f9f9;
+    background-color: #242124;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: background-color 0.3s, color 0.3s;
+    text-decoration: none;
+}
+
+.social-bar a:hover {
+    background-color: greenyellow;
+    color: blueviolet;
+}
+
+/* Scroll to Top Button */
+#scrollToTopBtn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: #f9f9f9;
+    color: #242124;
+    border: none;
+    outline: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.2rem;
+    display: none; /* standaard verborgen */
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+#scrollToTopBtn:hover {
+    background-color: blueviolet;
+    color: #f9f9f9;
+    transform: scale(1.1);
+}
+
+/* Footer */
+/*.footer {
+    background-color: #242124;
+    color: #f9f9f9;
+    padding: 50px 20px 20px;
+}
+
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.footer-col {
+    flex: 1 1 200px;
+}
+
+.footer-logo {
+    width: auto;
+    height: 60px;
+    margin-bottom: 20px;
+}
+
+.footer-col h4 {
+    font-size: 16px;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.footer-col ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-col ul li {
+    margin-bottom: 10px;
+}
+
+.footer-col ul li a {
+    color: #f9f9f9;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-col ul li a:hover {
+    color: blueviolet;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    margin-top: 30px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    font-size: 14px;
+    color: #888;
+}*/
+
+.custom-footer {
+    background: linear-gradient(135deg, #1a1a1a, blueviolet);
+    color: #fff;
+    padding: 60px 20px;
+    font-family: sans-serif;
+    text-align: left;
+}
+
+.footer-top {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 40px;
+    margin-bottom: 40px;
+    justify-items: center;
+}
+
+.footer-col h4 {
+    font-size: 14px;
+    margin-bottom: 15px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #f9f9f9;
+}
+
+.footer-col ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-col ul li {
+    margin-bottom: 10px;
+}
+
+.footer-col ul li a {
+    color: #f9f9f9;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.footer-col ul li a:hover {
+    color: greenyellow;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    width: 84%; /* maak de lijn 50% van de breedte */
+    margin: 20px auto; /* centreert de lijn */
+}
+
+/* Newsletter sectie in 2 kolommen */
+.newsletter {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 40px;
+    margin: 30px auto;
+    flex-wrap: wrap;
+}
+
+.newsletter-left {
+    flex: 1;
+    min-width: 250px;
+    margin: 20px 150px;
+}
+
+.newsletter-left h5 {
+    margin: 0 0 10px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.newsletter-left p {
+    font-size: 14px;
+    margin-bottom: 15px;
+    color: #aaa;
+}
+
+.newsletter-right {
+    flex: 1;
+    min-width: 280px;
+    max-width: 400px;
+    margin: 20px 150px;
+}
+
+.input-group {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.input-group input {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+}
+
+.input-group button {
+    padding: 10px 20px;
+    background: #fff;
+    color: #000;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.input-group button:hover {
+    background-color: #242124;
+    color: #f9f9f9;
+}
+
+.newsletter label {
+    font-size: 12px;
+    color: #aaa;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.footer-legal {
+    margin: 20px 150px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    font-size: 12px;
+    color: #777;
+}
+
+.footer-links a {
+    color: #ccc;
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+.footer-links a:hover {
+    color: greenyellow;
+}
+.footer-map-col {
+    grid-column: span 2; /* neemt de breedte van 2 kolommen */
+}
+
+.map-container {
+    width: 150%; /* laat wat ruimte rechts */
+    height: 250px;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+
+    margin-top: 15px;   /* ruimte boven de lijn */
+    margin-bottom: 10px;
+}
+
+.map-container iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+}
+.footer-logo-big {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+.footer-logo-big img {
+    height: 400px;
+    width: auto;
+    display: block;
+
+    /* fade van onder (0%) naar boven (100%) */
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-size: 100% 100%;
+
+    mask-image: linear-gradient(to top, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%);
+    mask-repeat: no-repeat;
+    mask-size: 100% 100%;
+}
+
+
+@media (max-width: 768px) {
+    .social-sidebar {
+        left: 10px;
+        gap: 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    .contact-content {
+        grid-template-columns: 1fr;
+    }
+    .contact-info {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .contact-container {
+        flex-direction: column;
+    }
+
+    .contact-left, .contact-right {
+        width: 100%;
+    }
+}
+@media (max-width: 900px) {
+    .about-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .skills {
+        justify-content: center;
+    }
+}

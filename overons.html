@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Over ons</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script defer src="index.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Navbar -->
+<header class="navbar">
+    <div class="container">
+        <div class="logo">
+            <a href="index.html">
+                <img src="assets/MainLogoWit.png" alt="PEKR Main Logo" class="logo-img">
+            </a>
+        </div>
+        <!--<nav>
+            <ul>
+                <li><a href="diensten.html">Diensten</a></li>
+                <li><a href="overons.html">Over ons</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>-->
+        <!-- NIEUW: Menu button -->
+        <div class="menu-btn" onclick="toggleMenu()">Menu</div>
+    </div>
+</header>
+
+<!-- NIEUW: Overlay-menu -->
+<div class="overlay-menu" id="overlayMenu">
+    <div class="top-bar">
+        <span class="logo">PEKR®</span>
+        <span class="tagline">Grafisch ontwerp studio</span>
+        <button class="close-btn" onclick="toggleMenu()">Close</button>
+    </div>
+
+    <nav class="menu-links">
+        <a href="index.html" class="rotated">Home</a>
+        <a href="diensten.html" class="rotated">Diensten</a>
+        <a href="portfolio.html" class="rotated">Portfolio</a>
+        <a href="overons.html" class="rotated">Over mij</a>
+        <a href="contact.html" class="rotated">Contact</a>
+    </nav>
+
+    <div class="bottom-buttons">
+        <a class="cta" href="contact.html">Gratis kennismaking</a>
+    </div>
+</div>
+
+<!-- Scroll to Top Button -->
+<button id="scrollToTopBtn" title="Ga naar boven">
+    <i class="fas fa-arrow-up"></i>
+</button>
+
+<!-- ABOUT HERO -->
+<section class="about-hero">
+    <div class="about-hero-inner">
+        <h1>OVER MIJ <span>✦</span></h1>
+        <p>Ik breng ideeën tot leven met doordacht design en oog voor detail.</p>
+    </div>
+</section>
+
+<section class="about-section">
+    <div class="about-container">
+        <div class="about-image">
+            <img src="assets/Mikail%20Peker.jpg" alt="Mikail Peker">
+        </div>
+        <div class="about-content">
+            <p class="about-subtitle"><i>Grafisch ontwerper & digitale creator</i></p>
+            <!--<p>
+                Ik help merken groeien via strategisch design, branding en digitale
+                oplossingen. Mijn aanpak combineert creativiteit met structuur,
+                zodat elk project niet alleen mooi oogt, maar ook resultaat oplevert.
+            </p>-->
+            <p>
+                Mijn naam is <strong>Mikail Peker</strong>, afgestudeerd in Digitale Vormgeving aan Hogeschool PXL in Hasselt.
+                Met een sterke passie voor design en visuele communicatie werk ik dagelijks aan het creëren van
+                doordachte en aantrekkelijke ontwerpen. Ik voel me helemaal in mijn element wanneer ik ideeën tot leven
+                kan brengen, zowel in functionele interfaces als in krachtige visuele identiteiten.
+            </p>
+            <p>
+                Naast het ontwerpen van wireframes en digitale schermen in Figma, heb ik ook een grote affiniteit met
+                branding. Van het ontwikkelen van logo’s en huisstijlen tot het vormgeven van posters, social media
+                visuals en andere merkuitingen. Ik zorg ervoor dat elk ontwerp visueel consistent en doelgericht is.
+                Ik hou ervan om merken een eigen gezicht te geven en werk graag aan gerichte campagnes die opvallen
+                in de digitale wereld.
+            </p>
+            <p>
+                Ook op het vlak van digitale marketing denk ik graag strategisch mee. Ik werk mee aan campagnes met oog
+                voor doelgroep, platform en boodschap, waarbij ik het visuele luik vertaal naar sterke content.
+                Tools zoals Adobe Illustrator, Photoshop en After Effects helpen mij daarbij om creatieve en impactvolle
+                visuals te maken, of het nu gaat om statische beelden of korte animaties.
+            </p>
+            <p>
+                Voordat ik aan mijn creatieve reis begon, behaalde ik met onderscheiding mijn diploma in
+                Accounting Administration. Deze achtergrond heeft me een analytische blik, nauwkeurigheid en een
+                professionele werkhouding meegegeven en de eigenschappen die ik vandaag nog steeds inzet in elk
+                designproject.
+            </p>
+            <p>
+                Met mijn mix van technische skills, creatieve flair en een strategisch inzicht wil ik als jonge designer
+                bijdragen aan digitale oplossingen die zowel mooi als functioneel zijn.
+            </p>
+
+            <a href="assets/CV%20Mikail%20Peker%20UPDATED.pdf" class="about-btn" target="_blank">
+                <i class="fa-solid fa-download"></i> Download CV
+            </a>
+        </div>
+    </div>
+    <!-- Skills -->
+    <div class="skills">
+        <div class="skill">
+            <div class="circle" data-percent="85">
+                <span>85%</span>
+            </div>
+            <p>Figma</p>
+        </div>
+        <div class="skill">
+            <div class="circle" data-percent="80">
+                <span>80%</span>
+            </div>
+            <p>Photoshop</p>
+        </div>
+        <div class="skill">
+            <div class="circle" data-percent="90">
+                <span>90%</span>
+            </div>
+            <p>Illustrator</p>
+        </div>
+        <div class="skill">
+            <div class="circle" data-percent="65">
+                <span>65%</span>
+            </div>
+            <p>After Effects</p>
+        </div>
+        <div class="skill">
+            <div class="circle" data-percent="70">
+                <span>70%</span>
+            </div>
+            <p>Blender</p>
+        </div>
+        <div class="skill">
+            <div class="circle" data-percent="85">
+                <span>85%</span>
+            </div>
+            <p>Wix</p>
+        </div>
+        <div class="skill">
+            <div class="circle" data-percent="85">
+                <span>85%</span>
+            </div>
+            <p>WordPress</p>
+        </div>
+    </div>
+</section>
+<!-- Footer -->
+<footer class="custom-footer">
+    <div class="footer-top">
+        <div class="footer-col">
+            <h4><span>✦</span> Snelle links</h4>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="diensten.html">Diensten</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="overons.html">Over mij</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4><span>✦</span> Socials</h4>
+            <ul>
+                <li><a href="#" target="_blank">Facebook</a></li>
+                <li><a href="https://www.instagram.com/pekrdesign" target="_blank">Instagram</a></li>
+                <li><a href="https://www.linkedin.com/in/mikail-peker-b15944195/" target="_blank">LinkedIn</a></li>
+            </ul>
+        </div>
+        <div class="footer-col footer-map-col">
+            <h4><span>✦</span> Locatie</h4>
+            <div class="map-container">
+                <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2499.473832399997!2d5.303749476844555!3d51.014820771708265!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c11ebec13451f1%3A0x97fc2470a76c41eb!2sOlmenstraat%2012%2C%203550%20Heusden-Zolder!5e0!3m2!1snl!2sbe!4v1690812345678!5m2!1snl!2sbe"
+                        allowfullscreen=""
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+        </div>
+    </div>
+    <div class="footer-logo-big">
+        <img src="assets/MainLogoWit.png" alt="PEKR Logo">
+    </div>
+    <div class="footer-legal">
+        <p>&copy; 2026 PEKR — Alle rechten voorbehouden</p>
+        <div class="footer-links">
+            <a href="#">Privacybeleid</a>
+            <a href="#">Gebruiksvoorwaarden</a>
+            <a href="#">Cookiebeleid
+            </a>
+        </div>
+    </div>
+</footer>
+<div class="cursor-dot"></div>
+</body>
+</html>

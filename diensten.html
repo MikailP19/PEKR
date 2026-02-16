@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Diensten</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script defer src="index.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Navbar -->
+<header class="navbar">
+    <div class="container">
+        <div class="logo">
+            <a href="index.html">
+                <img src="assets/MainLogoWit.png" alt="PEKR Main Logo" class="logo-img">
+            </a>
+        </div>
+        <!--<nav>
+            <ul>
+                <li><a href="diensten.html">Diensten</a></li>
+                <li><a href="overons.html">Over ons</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>-->
+        <!-- NIEUW: Menu button -->
+        <div class="menu-btn" onclick="toggleMenu()">Menu</div>
+    </div>
+</header>
+
+<!-- NIEUW: Overlay-menu -->
+<div class="overlay-menu" id="overlayMenu">
+    <div class="top-bar">
+        <span class="logo">PEKR®</span>
+        <span class="tagline">Grafisch ontwerp studio</span>
+        <button class="close-btn" onclick="toggleMenu()">Close</button>
+    </div>
+
+    <nav class="menu-links">
+        <a href="index.html" class="rotated">Home</a>
+        <a href="diensten.html" class="rotated">Diensten</a>
+        <a href="portfolio.html" class="rotated">Portfolio</a>
+        <a href="overons.html" class="rotated">Over mij</a>
+        <a href="contact.html" class="rotated">Contact</a>
+    </nav>
+
+    <div class="bottom-buttons">
+        <a class="cta" href="contact.html">Gratis kennismaking</a>
+    </div>
+</div>
+
+<!-- Scroll to Top Button -->
+<button id="scrollToTopBtn" title="Ga naar boven">
+    <i class="fas fa-arrow-up"></i>
+</button>
+
+<!-- ABOUT HERO -->
+<section class="about-hero">
+    <div class="about-hero-inner">
+        <h1>DIENSTEN <span>✦</span></h1>
+        <p>Design op maat dat jouw merk sterker maakt.</p>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="custom-footer">
+    <div class="footer-top">
+        <div class="footer-col">
+            <h4><span>✦</span> Snelle links</h4>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="diensten.html">Diensten</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="overons.html">Over mij</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4><span>✦</span> Socials</h4>
+            <ul>
+                <li><a href="#" target="_blank">Facebook</a></li>
+                <li><a href="https://www.instagram.com/pekrdesign" target="_blank">Instagram</a></li>
+                <li><a href="https://www.linkedin.com/in/mikail-peker-b15944195/" target="_blank">LinkedIn</a></li>
+            </ul>
+        </div>
+        <div class="footer-col footer-map-col">
+            <h4><span>✦</span> Locatie</h4>
+            <div class="map-container">
+                <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2499.473832399997!2d5.303749476844555!3d51.014820771708265!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c11ebec13451f1%3A0x97fc2470a76c41eb!2sOlmenstraat%2012%2C%203550%20Heusden-Zolder!5e0!3m2!1snl!2sbe!4v1690812345678!5m2!1snl!2sbe"
+                        allowfullscreen=""
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+        </div>
+    </div>
+    <div class="footer-logo-big">
+        <img src="assets/MainLogoWit.png" alt="PEKR Logo">
+    </div>
+    <div class="footer-legal">
+        <p>&copy; 2026 PEKR — Alle rechten voorbehouden</p>
+        <div class="footer-links">
+            <a href="#">Privacybeleid</a>
+            <a href="#">Gebruiksvoorwaarden</a>
+            <a href="#">Cookiebeleid
+            </a>
+        </div>
+    </div>
+</footer>
+<div class="cursor-dot"></div>
+</body>
+</html>
