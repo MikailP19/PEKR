@@ -231,19 +231,20 @@ function initPortfolioFilter() {
 }
 const rows = document.querySelectorAll('.process-row');
 
-function handleScroll() {
+function handleProcessScroll() {
+
     rows.forEach(row => {
 
         const rect = row.getBoundingClientRect();
         const windowHeight = window.innerHeight;
         const progressBar = row.querySelector('.progress-fill');
 
-        // Reveal animatie
+        /* Reveal animatie */
         if (rect.top < windowHeight * 0.85) {
             row.classList.add('show');
         }
 
-        // Progress berekening
+        /* Progress berekening */
         if (rect.top < windowHeight && rect.bottom > 0) {
 
             const total = rect.height + windowHeight;
@@ -256,9 +257,9 @@ function handleScroll() {
 }
 
 window.addEventListener('scroll', () => {
-    requestAnimationFrame(handleScroll);
+    requestAnimationFrame(handleProcessScroll);
 });
 
-window.addEventListener('resize', handleScroll);
+window.addEventListener('resize', handleProcessScroll);
 
-handleScroll(); // initial call
+handleProcessScroll();

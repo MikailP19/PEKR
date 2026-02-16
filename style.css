@@ -1037,32 +1037,38 @@ body {
     border-radius: 10px;
     margin-bottom: 20px;
 }
+/* ========================= */
+/* PROCESS SECTION */
+/* ========================= */
+
 .process-section {
-    padding: 180px 0;
+    padding: 100px 0;
     background: #f9f9f9;
     position: relative;
     overflow: hidden;
 }
 
-.process-section::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background-image: url("https://grainy-gradients.vercel.app/noise.svg");
-    opacity: 0.05;
-    pointer-events: none;
+/* Zelfde container als diensten & portfolio */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
+
+/* ========================= */
+/* HEADER */
+/* ========================= */
 
 .process-header {
     text-align: center;
-    margin-bottom: 120px;
+    margin-bottom: 140px;
 }
 
 .process-header h2 {
     color: #242124;
-    font-size: 5rem;
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
     font-weight: 900;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
     position: relative;
     display: inline-block;
     text-transform: uppercase;
@@ -1088,17 +1094,21 @@ body {
     box-shadow: 0 2px 6px rgba(0,0,0,0.15);
 }
 
-.process-visual {
-    width: 100%;
+.process-header p {
+    color: #555;
+    font-size: 1.1rem;
 }
+
+/* ========================= */
+/* ROW LAYOUT */
+/* ========================= */
 
 .process-row {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 100px;
-    margin-bottom: 160px;
-    padding: 0 10%;
+    gap: 80px;
+    margin-bottom: 180px;
 
     opacity: 0;
     transform: translateY(80px);
@@ -1119,24 +1129,28 @@ body {
 }
 
 .step-number {
-    font-size: 4rem;
-    font-weight: 600;
-    display: block;
+    font-size: 3rem;
+    font-weight: 700;
     margin-bottom: 25px;
+    color: #242124;
 }
 
 .process-content h3 {
-    font-size: 5rem;
-    font-weight: 600;
-    line-height: 1.05;
-    margin-bottom: 30px;
+    font-size: clamp(2rem, 4vw, 3rem);
+    line-height: 1.1;
+    margin-bottom: 25px;
 }
 
 .process-content p {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     max-width: 500px;
     margin-bottom: 40px;
+    color: #555;
 }
+
+/* ========================= */
+/* IMAGE */
+/* ========================= */
 
 .process-image {
     flex: 1;
@@ -1146,6 +1160,7 @@ body {
 .process-image img {
     max-width: 100%;
     height: auto;
+    border-radius: 20px;
     animation: float 6s ease-in-out infinite;
 }
 
@@ -1155,12 +1170,14 @@ body {
     100% { transform: translateY(0); }
 }
 
-/* Progress bar */
+/* ========================= */
+/* PROGRESS BAR */
+/* ========================= */
 
 .progress-bar {
     width: 100%;
-    height: 22px;
-    background: #242124;
+    height: 14px;
+    background: #e4e4e4;
     border-radius: 50px;
     overflow: hidden;
 }
@@ -1168,19 +1185,17 @@ body {
 .progress-fill {
     width: 0%;
     height: 100%;
-    background: greenyellow;
+    background: blueviolet;
     border-radius: 50px;
+    transition: width 0.3s ease;
 }
 
-/* Hover micro interaction */
-
-.process-row:hover {
-    transform: translateY(0) scale(1.02);
-}
-
-/* Responsive */
+/* ========================= */
+/* RESPONSIVE */
+/* ========================= */
 
 @media (max-width: 992px) {
+
     .process-row,
     .process-row.reverse {
         flex-direction: column;
@@ -1188,14 +1203,11 @@ body {
         gap: 60px;
     }
 
-    .process-content h3 {
-        font-size: 3rem;
-    }
-
-    .step-number {
-        font-size: 3rem;
+    .process-content p {
+        margin: 0 auto 40px auto;
     }
 }
+
 
 /*.contact-section {
     text-align: center;
