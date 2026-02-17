@@ -394,7 +394,7 @@ body {
 }
 
 /* Subtiele noise / diepte */
-.about-hero::after {
+/*.about-hero::after {
     content: "";
     position: absolute;
     inset: 0;
@@ -428,7 +428,65 @@ body {
     color: #f9f9f9;
     max-width: 700px;
     margin: 0 auto;
+}*/
+
+.about-hero {
+    height: 70vh;
+    min-height: 550px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0 20px;
+    position: relative;
+    overflow: hidden;
+
+    background: linear-gradient(
+            to bottom,
+            blueviolet 0%,
+            #242124 70%
+    );
 }
+
+/* Subtiele lichtvlek bovenaan */
+.about-hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+            circle at 50% 20%,
+            rgba(255,255,255,0.08),
+            transparent 60%
+    );
+    pointer-events: none;
+}
+
+.hero-content {
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+.hero-title {
+    font-size: clamp(5rem, 15vw, 18rem);
+    font-weight: 900;
+    letter-spacing: -6px;
+    color: #ffffff;
+    margin: 0;
+    line-height: 0.9;
+}
+
+.hero-subtitle {
+    margin-top: 30px;
+    font-size: 1.1rem;
+    color: rgba(255,255,255,0.8);
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    letter-spacing: 1px;
+}
+
 
 .about-section {
     background: #0f0f0f;
