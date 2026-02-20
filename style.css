@@ -11,6 +11,12 @@ body {
     color: #242124;
     line-height: 1.6;
 }
+
+html,
+body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
 /* Kleine minimal dot */
 .cursor-dot {
     width: 12px;
@@ -39,10 +45,13 @@ body {
     padding: 0 20px;
 }
 
-/* Sticky Navbar */
+/* Navbar - fixed for hide-on-scroll behavior */
 .navbar {
-    position: sticky;
+    position: fixed;
     top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
     background: blueviolet;
     padding: 1rem 0;
     z-index: 1000;
@@ -53,6 +62,14 @@ body {
 
     border-bottom: 1px solid rgb(173, 255, 47); /* subtiel lijntje */
     border-radius: 0; /* kan je ronder maken indien je wil */
+
+    /* Hide on scroll down / show on scroll up */
+    transform: translateY(0);
+    transition: transform 0.3s ease;
+}
+
+.navbar.navbar--hidden {
+    transform: translateY(-100%);
 }
 
 .navbar .container {
@@ -251,7 +268,7 @@ body {
 }
 /* ===== STAGE (blueviolet achtergrond) ===== */
 .hero-stage {
-    height: 200vh;
+    height: 100vh;
     background: blueviolet;
     position: relative;
 
@@ -287,7 +304,9 @@ body {
 .hero {
     width: 100%;
     height: 100vh;
+    min-height: 400px;
     background: url('/assets/Mikail Peker.jpg') center/cover no-repeat;
+    background-attachment: scroll; /* smoother on mobile */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -298,6 +317,19 @@ body {
 /* Content */
 .hero .container {
     color: white;
+}
+
+.hero .container h1 {
+    font-size: clamp(1.75rem, 5vw, 3.5rem);
+    font-weight: 700;
+    line-height: 1.2;
+    margin: 0;
+}
+
+.hero .container p {
+    font-size: clamp(0.95rem, 2vw, 1.2rem);
+    margin-top: 16px;
+    opacity: 0.95;
 }
 
 .hero .btn {
@@ -394,7 +426,7 @@ body {
 }
 
 /* Subtiele noise / diepte */
-/*.about-hero::after {
+.about-hero::after {
     content: "";
     position: absolute;
     inset: 0;
@@ -428,25 +460,6 @@ body {
     color: #f9f9f9;
     max-width: 700px;
     margin: 0 auto;
-}*/
-
-.about-hero {
-    height: 70vh;
-    min-height: 550px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    padding: 0 20px;
-    position: relative;
-    overflow: hidden;
-
-    background: linear-gradient(
-            to bottom,
-            blueviolet 0%,
-            #242124 70%
-    );
 }
 
 /* Subtiele lichtvlek bovenaan */
@@ -1106,13 +1119,6 @@ body {
     overflow: hidden;
 }
 
-/* Zelfde container als diensten & portfolio */
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
 /* ========================= */
 /* HEADER */
 /* ========================= */
@@ -1146,7 +1152,7 @@ body {
     padding: 6px 14px;
     border-radius: 50px;
     position: absolute;
-    top: -20px;
+    top: -30px;
     left: 50%;
     transform: translateX(-50%) rotate(-10deg);
     box-shadow: 0 2px 6px rgba(0,0,0,0.15);
@@ -1249,25 +1255,6 @@ body {
     border-radius: 50px;
     transition: width 0.3s ease;
 }
-
-/* ========================= */
-/* RESPONSIVE */
-/* ========================= */
-
-@media (max-width: 992px) {
-
-    .process-row,
-    .process-row.reverse {
-        flex-direction: column;
-        text-align: center;
-        gap: 60px;
-    }
-
-    .process-content p {
-        margin: 0 auto 40px auto;
-    }
-}
-
 
 /*.contact-section {
     text-align: center;
@@ -1681,75 +1668,6 @@ hr {
     margin: 20px auto; /* centreert de lijn */
 }
 
-/* Newsletter sectie in 2 kolommen */
-.newsletter {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 40px;
-    margin: 30px auto;
-    flex-wrap: wrap;
-}
-
-.newsletter-left {
-    flex: 1;
-    min-width: 250px;
-    margin: 20px 150px;
-}
-
-.newsletter-left h5 {
-    margin: 0 0 10px;
-    font-size: 18px;
-    font-weight: bold;
-}
-
-.newsletter-left p {
-    font-size: 14px;
-    margin-bottom: 15px;
-    color: #aaa;
-}
-
-.newsletter-right {
-    flex: 1;
-    min-width: 280px;
-    max-width: 400px;
-    margin: 20px 150px;
-}
-
-.input-group {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 10px;
-}
-
-.input-group input {
-    flex: 1;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-}
-
-.input-group button {
-    padding: 10px 20px;
-    background: #fff;
-    color: #000;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-.input-group button:hover {
-    background-color: #242124;
-    color: #f9f9f9;
-}
-
-.newsletter label {
-    font-size: 12px;
-    color: #aaa;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-}
-
 .footer-legal {
     margin: 20px 150px;
     display: flex;
@@ -1769,27 +1687,6 @@ hr {
 .footer-links a:hover {
     color: greenyellow;
 }
-.footer-map-col {
-    grid-column: span 2; /* neemt de breedte van 2 kolommen */
-}
-
-.map-container {
-    width: 150%; /* laat wat ruimte rechts */
-    height: 250px;
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-
-    margin-top: 15px;   /* ruimte boven de lijn */
-    margin-bottom: 10px;
-}
-
-.map-container iframe {
-    width: 100%;
-    height: 100%;
-    border: none;
-    display: block;
-}
 .footer-logo-big {
     display: flex;
     justify-content: center;
@@ -1797,8 +1694,9 @@ hr {
 }
 
 .footer-logo-big img {
-    height: 400px;
-    width: auto;
+    max-width: 100%;
+    height: auto;
+    max-height: 400px;
     display: block;
 
     /* fade van onder (0%) naar boven (100%) */
@@ -1811,39 +1709,590 @@ hr {
 }
 
 
-@media (max-width: 768px) {
-    .social-sidebar {
-        left: 10px;
+/* ========================= */
+/* MOBILE FIRST RESPONSIVE   */
+/* Breakpoints: 576px, 768px, 992px, 1200px */
+/* ========================= */
+
+/* --- Touch: hide custom cursor (better UX on mobile/tablet) --- */
+@media (hover: none) and (pointer: coarse) {
+    .cursor-dot {
+        display: none !important;
+    }
+}
+
+/* --- Mobile: base / small phones (default up to 575px) --- */
+@media (max-width: 575px) {
+    .container {
+        padding: 0 16px;
+    }
+
+    .navbar {
+        padding: 0.6rem 0;
+    }
+
+    .logo-img {
+        height: 44px;
+    }
+
+    .menu-btn {
+        padding: 10px 18px;
+        font-size: 0.9rem;
+    }
+
+    .overlay-menu .top-bar {
+        padding: 16px 20px;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .overlay-menu .menu-links {
+        flex-direction: column;
+        gap: 28px;
+        align-items: center;
+    }
+
+    .overlay-menu .menu-links a {
+        font-size: 1.25rem;
+        transform: rotate(0deg);
+    }
+
+    .overlay-menu .bottom-buttons {
+        padding: 20px;
+        text-align: center;
+    }
+
+    .hero .container h1 {
+        font-size: clamp(1.5rem, 7vw, 2.2rem);
+        line-height: 1.2;
+        padding: 0 8px;
+    }
+
+    .hero .container p {
+        font-size: 0.95rem;
+        margin-top: 12px;
+        padding: 0 8px;
+    }
+
+    .hero .btn {
+        margin-top: 24px;
+        padding: 12px 24px;
+        font-size: 0.9rem;
+    }
+
+    .scroll-down {
+        bottom: 120px;
+        width: 46px;
+        height: 46px;
+    }
+
+    .scroll-down span {
+        width: 8px;
+        height: 8px;
+    }
+
+    .next-section {
+        padding: 60px 16px;
+    }
+
+    .diensten,
+    .portfolio-home,
+    .process-section {
+        padding: 50px 0 60px;
+    }
+
+    .diensten-header,
+    .portfolio-header {
+        margin-bottom: 36px;
+    }
+
+    .diensten-header h2,
+    .portfolio-header h2 {
+        font-size: clamp(1.75rem, 8vw, 2.5rem);
+        letter-spacing: 0.5px;
+    }
+
+    .diensten-header h2 .accent-tag,
+    .portfolio-header h2 .accent-tag {
+        font-size: 0.85rem;
+        padding: 4px 10px;
+        top: -12px;
+    }
+
+    .diensten-header p,
+    .portfolio-header p {
+        font-size: 0.9rem;
+    }
+
+    .diensten-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
+    .dienst-card {
+        padding: 28px 20px;
+    }
+
+    .dienst-card h3 {
+        font-size: 1.2rem;
+    }
+
+    .dienst-tags {
+        margin: 14px 0 18px;
+        gap: 8px;
+    }
+
+    .dienst-tags span {
+        font-size: 0.8rem;
+        padding: 5px 14px;
+    }
+
+    .portfolio-filter {
+        margin-bottom: 28px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px;
+    }
+
+    .filter-btn {
+        padding: 8px 14px;
+        margin: 0 4px;
+        font-size: 0.85rem;
+    }
+
+    .portfolio-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
+    .portfolio-card .img-wrapper {
+        height: 180px;
+        padding: 20px;
+    }
+
+    .portfolio-content {
+        padding: 16px;
+    }
+
+    .portfolio-content h3 {
+        font-size: 1.1rem;
+    }
+
+    .portfolio-content p {
+        font-size: 13px;
+    }
+
+    .portfolio-more {
+        margin-top: 28px;
+    }
+
+    .portfolio-more .btn {
+        margin-top: 0;
+        padding: 12px 24px;
+        font-size: 0.9rem;
+    }
+
+    .process-header {
+        margin-bottom: 50px;
+    }
+
+    .process-header h2 {
+        font-size: clamp(1.5rem, 5vw, 2rem);
+        letter-spacing: 0.5px;
+    }
+
+    .process-header h2 .accent-tag {
+        font-size: 0.85rem;
+        padding: 4px 10px;
+        top: -12px;
+    }
+
+    .process-header p {
+        font-size: 0.95rem;
+    }
+
+    .process-row,
+    .process-row.reverse {
+        flex-direction: column;
+        text-align: center;
+        gap: 40px;
+        margin-bottom: 60px;
+    }
+
+    .process-content p {
+        margin: 0 auto 24px auto;
+        font-size: 0.95rem;
+    }
+
+    .process-content h3 {
+        font-size: clamp(1.4rem, 4vw, 1.75rem);
+    }
+
+    .step-number {
+        font-size: 2.25rem;
+    }
+
+    .process-image dotlottie-wc {
+        width: 280px;
+        height: 280px;
+    }
+
+    .about-hero {
+        min-height: 30vh;
+        padding: 80px 16px 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .about-hero-inner {
+        width: 100%;
+    }
+
+    .about-hero h1 {
+        font-size: clamp(2rem, 8vw, 3rem);
+        margin-bottom: 16px;
+    }
+
+    .about-hero p {
+        font-size: clamp(0.95rem, 3vw, 1.1rem);
+    }
+
+    .hero-title {
+        font-size: clamp(3rem, 18vw, 6rem);
+        letter-spacing: -2px;
+    }
+
+    .hero-subtitle {
+        font-size: 0.95rem;
+        margin-top: 20px;
+    }
+
+    .about-section {
+        padding: 60px 16px;
+    }
+
+    .about-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        text-align: center;
+    }
+
+    .about-content h2 {
+        font-size: 1.75rem;
+    }
+
+    .about-content p {
+        font-size: 0.95rem;
+    }
+
+    .about-btn {
+        padding: 12px 24px;
+    }
+
+    .skills {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 28px;
+        margin-top: 60px;
+    }
+
+    .circle {
+        --size: 90px;
+        --stroke: 6px;
+    }
+
+    .skill p {
+        font-size: 0.85rem;
+    }
+
+    .contact-section {
+        padding: 40px 16px;
+    }
+
+    .contact-left h1 {
+        font-size: clamp(2rem, 10vw, 3rem);
+    }
+
+    .contact-content {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+
+    .contact-info {
+        grid-template-columns: 1fr;
+        gap: 16px;
+        margin-top: 40px;
+    }
+
+    .contact-form {
+        padding: 16px;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+        font-size: 16px; /* prevents iOS zoom on focus */
+    }
+
+    .footer-top {
+        grid-template-columns: 1fr;
+        gap: 32px;
+        margin-bottom: 32px;
+        justify-items: center;
+    }
+
+    .footer-col {
+        text-align: center;
+    }
+
+    .footer-col h4 {
+        text-align: center;
+    }
+
+    .footer-col ul {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-legal {
+        margin: 20px 16px;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 12px;
+    }
+
+    .footer-logo-big {
+        margin-top: 32px;
+    }
+
+    .footer-logo-big img {
+        max-width: 80%;
+        height: auto;
+        max-height: 200px;
+    }
+
+    .case-hero {
+        height: 60vh;
+        padding: 0 24px 50px;
+    }
+
+    .case-hero h1 {
+        font-size: clamp(1.75rem, 6vw, 2.5rem);
+    }
+
+    .case-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        margin: 50px auto;
+        padding: 0 16px;
+    }
+
+    #scrollToTopBtn {
+        width: 44px;
+        height: 44px;
+        bottom: 20px;
+        right: 20px;
+        font-size: 1rem;
+    }
+
+    .social-bar {
+        margin-top: 80px;
+        padding-top: 60px;
+        flex-wrap: wrap;
         gap: 10px;
     }
 }
 
-@media (max-width: 768px) {
-    .contact-content {
+/* --- Mobile landscape / large phone (576px – 767px) --- */
+@media (min-width: 576px) and (max-width: 767px) {
+    .diensten-header h2,
+    .portfolio-header h2 {
+        font-size: clamp(2rem, 6vw, 2.75rem);
+    }
+
+    .diensten-grid {
         grid-template-columns: 1fr;
     }
+
+    .portfolio-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+
+    .process-image dotlottie-wc {
+        width: 320px;
+        height: 320px;
+    }
+
+    .hero-title {
+        font-size: clamp(3.5rem, 12vw, 5rem);
+    }
+
     .contact-info {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-    .contact-container {
+/* --- Tablet (768px – 991px) --- */
+@media (min-width: 768px) {
+    .container {
+        padding: 0 24px;
+    }
+
+    .diensten-header h2,
+    .portfolio-header h2 {
+        font-size: clamp(2.5rem, 5vw, 3.5rem);
+    }
+
+    .diensten-grid {
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 32px;
+    }
+
+    .portfolio-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 28px;
+    }
+
+    .hero .container h1 {
+        font-size: clamp(2rem, 5vw, 3rem);
+    }
+
+    .overlay-menu .menu-links {
+        gap: 40px;
+    }
+
+    .overlay-menu .menu-links a {
+        font-size: 1.4rem;
+    }
+
+    .footer-top {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .footer-legal {
+        margin: 20px 40px;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .footer-logo-big img {
+        height: 280px;
+    }
+
+    .contact-content {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .contact-info {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+    .process-row,
+    .process-row.reverse {
         flex-direction: column;
+        text-align: center;
+        gap: 50px;
+        margin-bottom: 80px;
     }
 
-    .contact-left, .contact-right {
-        width: 100%;
+    .process-content p {
+        margin: 0 auto 32px auto;
     }
-}
-@media (max-width: 900px) {
+
+    .process-image dotlottie-wc {
+        width: 380px;
+        height: 380px;
+    }
+
     .about-container {
         grid-template-columns: 1fr;
         text-align: center;
     }
 
     .skills {
+        flex-wrap: wrap;
         justify-content: center;
+    }
+}
+
+/* --- Desktop (992px+) --- */
+@media (min-width: 992px) {
+    .process-row {
+        flex-direction: row;
+        text-align: left;
+        gap: 80px;
+        margin-bottom: 100px;
+    }
+
+    .process-row.reverse {
+        flex-direction: row-reverse;
+        text-align: right;
+    }
+
+    .process-row.reverse .process-content p {
+        margin-left: auto;
+        margin-right: 0;
+    }
+
+    .process-content p {
+        margin: 0 0 40px 0;
+    }
+
+    .process-image dotlottie-wc {
+        width: 420px;
+        height: 420px;
+    }
+
+    .about-container {
+        grid-template-columns: 1fr 1fr;
+        text-align: left;
+    }
+
+    .skills {
+        flex-wrap: nowrap;
+        justify-content: space-between;
+    }
+}
+
+/* --- Large desktop (1200px+) --- */
+@media (min-width: 1200px) {
+    .diensten-header h2,
+    .portfolio-header h2 {
+        font-size: 5rem;
+    }
+
+    .diensten-header h2 .accent-tag,
+    .portfolio-header h2 .accent-tag {
+        font-size: 1.5rem;
+        padding: 6px 14px;
+        top: -20px;
+    }
+
+    .portfolio-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+    }
+
+    .process-image dotlottie-wc {
+        width: 500px;
+        height: 500px;
+    }
+
+    .footer-legal {
+        margin: 20px 150px;
+    }
+
+    .footer-logo-big img {
+        height: 400px;
+    }
+
+    .contact-left h1 {
+        font-size: 5rem;
     }
 }

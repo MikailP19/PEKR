@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
     initFadeIn();
     initMenuHighlight();
     initScrollToTop();
+    initNavbarScrollHide();
     initCircles();
     initHeroScroll();
     initCursor();
@@ -53,6 +54,43 @@ function initMenuHighlight() {
     });
 }
 
+
+/* ========================= */
+/* NAVBAR: HIDE ON SCROLL DOWN / SHOW ON SCROLL UP */
+/* ========================= */
+function initNavbarScrollHide() {
+    const navbar = document.querySelector(".navbar");
+    if (!navbar) return;
+
+    const scrollThreshold = 10;
+    const topThreshold = 80;
+    let lastScrollY = window.scrollY;
+    let ticking = false;
+
+    function updateNavbar() {
+        const scrollY = window.scrollY;
+
+        if (scrollY <= topThreshold) {
+            navbar.classList.remove("navbar--hidden");
+        } else if (scrollY > lastScrollY && scrollY - lastScrollY > scrollThreshold) {
+            navbar.classList.add("navbar--hidden");
+        } else if (lastScrollY > scrollY && lastScrollY - scrollY > scrollThreshold) {
+            navbar.classList.remove("navbar--hidden");
+        }
+
+        lastScrollY = scrollY;
+        ticking = false;
+    }
+
+    function onScroll() {
+        if (!ticking) {
+            requestAnimationFrame(updateNavbar);
+            ticking = true;
+        }
+    }
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+}
 
 /* ========================= */
 /* SCROLL TO TOP */
