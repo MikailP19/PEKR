@@ -44,6 +44,17 @@ body {
     margin: 0 auto;
     padding: 0 20px;
 }
+:root {
+    --navbar-height: 80px;
+}
+
+.navbar {
+    height: var(--navbar-height);
+}
+
+body {
+    padding-top: var(--navbar-height);
+}
 
 /* Navbar - fixed for hide-on-scroll behavior */
 .navbar {
@@ -51,19 +62,19 @@ body {
     top: 0;
     left: 0;
     right: 0;
-    width: 100%;
+
+    height: var(--navbar-height); /* vaste hoogte */
+    display: flex;               /* belangrijk */
+    align-items: center;         /* verticale centrering */
+
     background: blueviolet;
-    padding: 1rem 0;
     z-index: 1000;
 
-    /* Liquid glass effect */
     backdrop-filter: blur(12px) saturate(180%);
     -webkit-backdrop-filter: blur(12px) saturate(180%);
 
-    border-bottom: 1px solid rgb(173, 255, 47); /* subtiel lijntje */
-    border-radius: 0; /* kan je ronder maken indien je wil */
+    border-bottom: 1px solid rgb(173, 255, 47);
 
-    /* Hide on scroll down / show on scroll up */
     transform: translateY(0);
     transition: transform 0.3s ease;
 }
@@ -73,9 +84,14 @@ body {
 }
 
 .navbar .container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: center; /* verticale align */
+    height: 100%;        /* vult navbar volledig */
 }
 
 .logo-img {
@@ -87,13 +103,18 @@ body {
 .navbar ul {
     list-style: none;
     display: flex;
+    align-items: center; /* belangrijk */
     gap: 1.5rem;
+    margin: 0;
+    padding: 0;
 }
 
 .navbar a {
+    display: flex;
+    align-items: center; /* tekst perfect in midden */
+    height: 100%;
     color: #f9f9f9;
     text-decoration: none;
-    transition: color 0.3s;
 }
 
 .navbar a:hover {
@@ -101,7 +122,6 @@ body {
 }
 
 /* ======= Fullscreen Overlay Menu ======= */
-
 .menu-btn {
     position: relative; /* nodig voor ::before */
     overflow: hidden;   /* zorgt dat animatie binnen knop blijft */
@@ -423,7 +443,19 @@ body {
     text-align: center;
     position: relative;
     overflow: hidden;
+    min-height: 30vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
+.hero-canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
 
 /* Subtiele noise / diepte */
 .about-hero::after {
@@ -435,11 +467,10 @@ body {
     pointer-events: none;
 }
 
+/* Zorg dat tekst boven canvas blijft */
 .about-hero-inner {
     position: relative;
-    z-index: 2;
-    max-width: 900px;
-    margin: 0 auto;
+    z-index: 3;
 }
 
 .about-hero h1 {
