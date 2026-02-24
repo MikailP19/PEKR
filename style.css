@@ -474,7 +474,7 @@ body {
 }
 
 .about-hero h1 {
-    font-size: clamp(3rem, 6vw, 5.5rem);
+    font-size: clamp(48px, 8vw, 110px);
     font-weight: 800;
     letter-spacing: -2px;
     margin-bottom: 20px;
@@ -533,8 +533,8 @@ body {
 
 
 .about-section {
-    background: #0f0f0f;
-    color: #f9f9f9;
+    background: #f9f9f9;
+    color: #242124;
     padding: 120px 20px;
 }
 .about-container {
@@ -561,7 +561,7 @@ body {
 .about-content p {
     line-height: 1.8;
     margin-bottom: 30px;
-    color: #f9f9f9;
+    color: #242124;
 }
 .about-btn {
     display: inline-block;
@@ -614,17 +614,18 @@ body {
     position: absolute;
     width: calc(var(--size) - var(--stroke) * 2);
     height: calc(var(--size) - var(--stroke) * 2);
-    background: #0f0f0f;
+    background: #242124;
     border-radius: 50%;
 }
 
 .circle span {
     position: relative;
     z-index: 2;
+    color: #f9f9f9;
 }
 
 .skill p {
-    color: #f9f9f9;
+    color: #242124;
 }
 /* Scroll Effect Section */
 .fade-in-section {
@@ -698,8 +699,10 @@ body {
 }
 
 .dienst-card:hover {
-    transform: translateY(-8px);
+    transform: translateY(-10px);
     box-shadow: 0 20px 50px rgba(0,0,0,0.08);
+    background-color: greenyellow;
+    border: 2px solid blueviolet;
 }
 .dienst-card:hover .icon-wrapper {
     background: blueviolet;
@@ -1285,6 +1288,203 @@ body {
     background: blueviolet;
     border-radius: 50px;
     transition: width 0.3s ease;
+}
+
+/*CTA SECTION*/
+.cta-cinematic {
+    position: relative;
+    background: #000000;
+    color: white;
+    padding: 160px 20px;
+    text-align: center;
+    overflow: hidden;
+}
+
+/* Moving Light / Smoke Orb */
+
+.cta-light {
+    position: absolute;
+    width: 800px;
+    height: 800px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+
+    background: radial-gradient(circle at 30% 30%,
+    #8A2BE2FF 0%,
+    #ADFF2FFF 40%,
+    transparent 70%
+    );
+
+    filter: blur(140px);
+    opacity: 0.75;
+
+    animation: brutalFloat 8s ease-in-out infinite alternate;
+}
+
+/* Extra energy layer */
+.cta-light::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background: radial-gradient(circle at 70% 70%,
+    #ADFF2FFF 0%,
+    #8A2BE2FF 50%,
+    transparent 80%
+    );
+
+    mix-blend-mode: screen;
+    filter: blur(160px);
+    opacity: 0.7;
+
+    animation: brutalFloatReverse 10s ease-in-out infinite alternate;
+}
+
+@keyframes brutalFloat {
+    0% {
+        transform: translate(-50%, -50%) scale(1);
+    }
+    100% {
+        transform: translate(-45%, -55%) scale(1.25);
+    }
+}
+
+@keyframes brutalFloatReverse {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1.2) rotate(20deg);
+    }
+}
+
+.cta-content {
+    position: relative;
+    z-index: 2;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.cta-sub {
+    font-size: 14px;
+    letter-spacing: 3px;
+    opacity: 0.6;
+    margin-bottom: 25px;
+}
+
+.cta-big {
+    font-size: clamp(48px, 8vw, 110px);
+    font-weight: 900;
+    line-height: 1.05;
+    margin-bottom: 50px;
+
+    background: linear-gradient(
+            90deg,
+            #f9f9f9,
+            #ADFF2FFF,
+            #8A2BE2FF
+    );
+
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    animation: textShine 6s linear infinite;
+}
+
+@keyframes textShine {
+    to {
+        background-position: 200% center;
+    }
+}
+
+/* CTA Button */
+.cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 15px;
+    padding: 14px 28px;
+    border-radius: 50px;
+    background: #f9f9f9;
+    color: #242124;
+    font-weight: 600;
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.35s ease;
+    z-index: 1;
+}
+
+/* Smooth fill effect */
+.cta-btn::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: blueviolet;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.35s ease;
+    z-index: -1;
+}
+
+.cta-btn:hover::before {
+    transform: scaleX(1);
+}
+
+/* Tekstkleur + kleine letter-spacing animatie */
+.cta-btn:hover {
+    color: #f9f9f9;
+    letter-spacing: 1px;
+}
+
+/* Optioneel: animatie voor de pijl */
+.cta-arrow {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #242124; /* neutraal op start */
+    color: #f9f9f9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.35s ease, background 0.35s ease;
+    z-index: 2;
+}
+
+.cta-btn:hover .cta-arrow {
+    transform: translateX(5px);
+    background: greenyellow; /* match neon gradient */
+    color: #242124;
+}
+
+/* Marquee */
+.cta-marquee {
+    position: absolute;
+    bottom: 40px;
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    z-index: 1;
+    color: #f9f9f9;
+}
+
+.cta-track {
+    display: inline-flex;
+    gap: 100px;
+    animation: marqueeMove 30s linear infinite;
+    font-weight: 700;
+    font-size: 18px;
+}
+
+@keyframes marqueeMove {
+    0% {
+        transform: translateX(-50%);
+    }
+    100% {
+        transform: translateX(0%);
+    }
 }
 
 /*.contact-section {
