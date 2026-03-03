@@ -1945,7 +1945,7 @@ body {
 }*/
 
 .custom-footer {
-    background: linear-gradient(135deg, #1a1a1a, blueviolet);
+    background: linear-gradient(135deg, #242124, blueviolet);
     color: #fff;
     padding: 60px 20px;
     font-family: sans-serif;
@@ -2497,7 +2497,7 @@ hr {
     }
 
     .footer-top {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(4, auto);
     }
 
     .footer-legal {
