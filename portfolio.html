@@ -8,7 +8,7 @@
   <script defer src="index.js"></script>
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="portfolio-page">
 
 <!-- Navbar -->
 <header class="navbar">
@@ -37,27 +37,27 @@
   </div>
   <nav class="menu-links">
     <a href="index.html">
-      <span class="link-number">01</span>
+      <span class="link-number">✦</span>
       <span class="link-label">Home</span>
       <span class="link-arrow">↗</span>
     </a>
     <a href="index.html#diensten">
-      <span class="link-number">02</span>
+      <span class="link-number">✦</span>
       <span class="link-label">Diensten</span>
       <span class="link-arrow">↗</span>
     </a>
     <a href="portfolio.html">
-      <span class="link-number">03</span>
+      <span class="link-number">✦</span>
       <span class="link-label">Portfolio</span>
       <span class="link-arrow">↗</span>
     </a>
     <a href="overons.html">
-      <span class="link-number">04</span>
+      <span class="link-number">✦</span>
       <span class="link-label">Over mij</span>
       <span class="link-arrow">↗</span>
     </a>
     <a href="contact.html">
-      <span class="link-number">05</span>
+      <span class="link-number">✦</span>
       <span class="link-label">Contact</span>
       <span class="link-arrow">↗</span>
     </a>
@@ -66,133 +66,240 @@
     <a class="cta" href="contact.html">Gratis kennismaking</a>
   </div>
 </div>
-<!-- ABOUT HERO -->
-<section class="about-hero">
-  <canvas class="hero-canvas"></canvas>
-  <div class="about-hero-inner">
-    <h1>PORTFOLIO <span>✦</span></h1>
-    <p>We leveren geen projecten op. We leveren werk om trots op te zijn.</p>
-  </div>
-</section>
-<section class="portfolio-home fade-in-section">
-  <div class="container">
-    <div class="portfolio-filter">
-      <button class="filter-btn active" data-filter="all">Alle</button>
-      <button class="filter-btn" data-filter="branding">Branding</button>
-      <button class="filter-btn" data-filter="webdesign">Webdesign</button>
-      <button class="filter-btn" data-filter="motion">Motion Design</button>
+<!-- HERO -->
+<section class="pf-hero">
+    <div class="pf-hero__grid"></div>
+    <div class="pf-hero__glow-top"></div>
+    <div class="pf-hero__glow-br"></div>
+
+    <div class="pf-hero__inner">
+        <p class="pf-hero__eyebrow">
+            <span class="pf-hero__eyebrow-dot"></span>Portfolio <span class="pf-hero__eyebrow-dot"></span>
+        </p>
+        <h1 class="pf-hero__title">
+            Projecten <i class="pf-hero__title-star">✦</i>
+        </h1>
+        <p class="pf-hero__sub">
+            We leveren geen projecten op &mdash; we leveren werk om trots op te zijn.
+        </p>
     </div>
-    <div class="portfolio-grid">
-      <!-- Project 1 -->
-      <div class="portfolio-card" data-category="branding">
-      <div class="img-wrapper">
-          <img src="assets/Websters logo.png" alt="Websters logo">
+
+    <div class="pf-hero__scroll" onclick="document.getElementById('projecten').scrollIntoView({behavior:'smooth'})">
+        <div class="pf-hero__scroll-line"></div>
+        <span class="pf-hero__scroll-label">Scroll</span>
+    </div>
+
+    <div class="pf-hero__marquee">
+        <div class="pf-hero__marquee-track">
+            <span>Branding ✦ Logo Design ✦ Webdesign ✦ UI/UX ✦ Motion Design ✦ Merkstrategie ✦ Visuele Identiteit ✦ Content Creatie ✦ Brand Guidelines ✦ Huisstijl ✦ Rebranding ✦ Presentaties ✦ Branding ✦ Logo Design ✦ Webdesign ✦ UI/UX ✦ Motion Design ✦ Merkstrategie ✦ Visuele Identiteit ✦ Content Creatie ✦ Brand Guidelines ✦ Huisstijl ✦</span>
         </div>
-        <div class="portfolio-content">
-          <span class="category">Branding</span>
-          <h3>Case Graduaatsproef Bij Websters</h3>
-          <p>Het ontwerpen van een gestandaardiseerde operationele flow voor het brandingproces bij Websters.</p>
-          <a href="project1.html" class="case-btn">Case Study →</a>
+    </div>
+</section>
+
+<!-- STATS BAR -->
+<div class="pf-stats">
+    <div class="container">
+        <div class="pf-stats__inner">
+            <div class="pf-stats__item">
+                <span class="pf-stats__number">9+</span>
+                <span class="pf-stats__label">Projecten afgerond</span>
+            </div>
+            <div class="pf-stats__item">
+                <span class="pf-stats__number">10</span>
+                <span class="pf-stats__label">Disciplines</span>
+            </div>
+            <div class="pf-stats__item">
+                <span class="pf-stats__number">100%</span>
+                <span class="pf-stats__label">Op maat gemaakt</span>
+            </div>
+            <div class="pf-stats__item">
+                <span class="pf-stats__number">&#8734;</span>
+                <span class="pf-stats__label">Passie voor design</span>
+            </div>
         </div>
-      </div>
-      <!-- Project 2 -->
-      <div class="portfolio-card" data-category="branding">
-      <div class="img-wrapper">
-          <img src="assets/Websters logo.png" alt="Websters logo">
+    </div>
+</div>
+
+<!-- PROJECTEN GRID -->
+<section class="pf-section" id="projecten">
+    <div class="container">
+
+        <div class="pf-section__header">
+            <p class="pf-section__eyebrow">
+                <span class="eyebrow-dot"></span>
+                Geselecteerde projecten
+            </p>
+            <h2 class="pf-section__title">Alle <em>Werk</em></h2>
+            <p class="pf-section__desc">Een overzicht van projecten waarbij strategie en esthetiek samenkomen.</p>
         </div>
-        <div class="portfolio-content">
-          <span class="category">Branding</span>
-          <h3>Rebranding PXL E-Sports</h3>
-          <p>Het ontwerpen van een gestandaardiseerde operationele flow voor het brandingproces bij Websters.</p>
-          <a href="project2.html" class="case-btn">Case Study →</a>
+
+        <div class="pf-filter">
+            <button class="pf-filter__btn active" data-filter="all">Alle</button>
+            <button class="pf-filter__btn" data-filter="branding">Branding</button>
+            <button class="pf-filter__btn" data-filter="webdesign">Webdesign</button>
+            <button class="pf-filter__btn" data-filter="motion">Motion Design</button>
         </div>
-      </div>
-      <!-- Project 3 -->
-      <div class="portfolio-card" data-category="branding">
-      <div class="img-wrapper">
-          <img src="assets/Websters logo.png" alt="Websters logo">
+
+        <div class="pf-grid" id="pfGrid">
+
+            <!-- Project 1 -->
+            <div class="pf-card" data-category="branding">
+                <div class="pf-card__img">
+                    <img src="assets/Websters logo.png" alt="Websters logo">
+                    <div class="pf-card__overlay">
+                        <span class="pf-card__overlay-cat">Branding</span>
+                        <h3 class="pf-card__overlay-title">Graduaatsproef Bij Websters</h3>
+                        <p class="pf-card__overlay-desc">Het ontwerpen van een gestandaardiseerde operationele flow voor het brandingproces bij Websters.</p>
+                        <a href="project1.html" class="pf-card__overlay-btn">Case Study ↗</a>
+                    </div>
+                </div>
+                <div class="pf-card__meta">
+                    <span class="pf-card__meta-cat">Branding</span>
+                    <h3 class="pf-card__meta-title">Graduaatsproef Bij Websters</h3>
+                </div>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="pf-card" data-category="branding">
+                <div class="pf-card__img">
+                    <img src="assets/Websters logo.png" alt="PXL E-Sports">
+                    <div class="pf-card__overlay">
+                        <span class="pf-card__overlay-cat">Branding</span>
+                        <h3 class="pf-card__overlay-title">Rebranding PXL E-Sports</h3>
+                        <p class="pf-card__overlay-desc">Volledige merkvernieuwing voor het e-sports team van PXL Hogeschool.</p>
+                        <a href="project2.html" class="pf-card__overlay-btn">Case Study ↗</a>
+                    </div>
+                </div>
+                <div class="pf-card__meta">
+                    <span class="pf-card__meta-cat">Branding</span>
+                    <h3 class="pf-card__meta-title">Rebranding PXL E-Sports</h3>
+                </div>
+            </div>
+
+            <!-- Project 3 -->
+            <div class="pf-card" data-category="branding">
+                <div class="pf-card__img">
+                    <img src="assets/Ahiska%20BB.png" alt="Ahiska Brand Guideline">
+                    <div class="pf-card__overlay">
+                        <span class="pf-card__overlay-cat">Branding</span>
+                        <h3 class="pf-card__overlay-title">Brand Guideline Ahiska</h3>
+                        <p class="pf-card__overlay-desc">Het ontwerpen van een volledig brandbook voor Ahiska.</p>
+                        <a href="project3.html" class="pf-card__overlay-btn">Case Study ↗</a>
+                    </div>
+                </div>
+                <div class="pf-card__meta">
+                    <span class="pf-card__meta-cat">Branding</span>
+                    <h3 class="pf-card__meta-title">Brand Guideline Ahiska</h3>
+                </div>
+            </div>
+
+            <!-- Project 4 -->
+            <div class="pf-card" data-category="webdesign">
+                <div class="pf-card__img">
+                    <img src="assets/pietershofkewebsite.png" alt="Website Pieter's Hofke">
+                    <div class="pf-card__overlay">
+                        <span class="pf-card__overlay-cat">Webdesign</span>
+                        <h3 class="pf-card__overlay-title">Website Pieter's Hofke</h3>
+                        <p class="pf-card__overlay-desc">Het ontwerpen van een volledige website voor Pieter's Hofke.</p>
+                        <a href="project4.html" class="pf-card__overlay-btn">Case Study ↗</a>
+                    </div>
+                </div>
+                <div class="pf-card__meta">
+                    <span class="pf-card__meta-cat">Webdesign</span>
+                    <h3 class="pf-card__meta-title">Website Pieter's Hofke</h3>
+                </div>
+            </div>
+
+            <!-- Project 5 -->
+            <div class="pf-card" data-category="webdesign">
+                <div class="pf-card__img">
+                    <img src="assets/Websters logo.png" alt="Website Rein4ced">
+                    <div class="pf-card__overlay">
+                        <span class="pf-card__overlay-cat">Webdesign</span>
+                        <h3 class="pf-card__overlay-title">Website Rein4ced</h3>
+                        <p class="pf-card__overlay-desc">Het ontwerpen van een volledige website voor Rein4ced.</p>
+                        <a href="project5.html" class="pf-card__overlay-btn">Case Study ↗</a>
+                    </div>
+                </div>
+                <div class="pf-card__meta">
+                    <span class="pf-card__meta-cat">Webdesign</span>
+                    <h3 class="pf-card__meta-title">Website Rein4ced</h3>
+                </div>
+            </div>
+
+            <!-- Project 6 -->
+            <div class="pf-card" data-category="branding">
+                <div class="pf-card__img">
+                    <img src="assets/Websters logo.png" alt="Designsysteem WeShare">
+                    <div class="pf-card__overlay">
+                        <span class="pf-card__overlay-cat">UI/UX</span>
+                        <h3 class="pf-card__overlay-title">Designsysteem WeShare</h3>
+                        <p class="pf-card__overlay-desc">Een volledig design system voor het WeShare platform.</p>
+                        <a href="project6.html" class="pf-card__overlay-btn">Case Study ↗</a>
+                    </div>
+                </div>
+                <div class="pf-card__meta">
+                    <span class="pf-card__meta-cat">UI/UX</span>
+                    <h3 class="pf-card__meta-title">Designsysteem WeShare</h3>
+                </div>
+            </div>
+
+            <!-- Project 7 -->
+            <div class="pf-card" data-category="motion">
+                <div class="pf-card__img">
+                    <img src="assets/Websters logo.png" alt="After Effects Music Match">
+                    <div class="pf-card__overlay">
+                        <span class="pf-card__overlay-cat">Motion Design</span>
+                        <h3 class="pf-card__overlay-title">After Effects: Music Match</h3>
+                        <p class="pf-card__overlay-desc">Een dynamische motion design productie gemaakt in After Effects.</p>
+                        <a href="project7.html" class="pf-card__overlay-btn">Case Study ↗</a>
+                    </div>
+                </div>
+                <div class="pf-card__meta">
+                    <span class="pf-card__meta-cat">Motion Design</span>
+                    <h3 class="pf-card__meta-title">After Effects: Music Match</h3>
+                </div>
+            </div>
+
+            <!-- Project 8 -->
+            <div class="pf-card" data-category="motion">
+                <div class="pf-card__img">
+                    <img src="assets/Websters logo.png" alt="Blender Through The Hoops">
+                    <div class="pf-card__overlay">
+                        <span class="pf-card__overlay-cat">Motion Design</span>
+                        <h3 class="pf-card__overlay-title">Blender: Through The Hoops</h3>
+                        <p class="pf-card__overlay-desc">Een 3D animatie geproduceerd in Blender.</p>
+                        <a href="project8.html" class="pf-card__overlay-btn">Case Study ↗</a>
+                    </div>
+                </div>
+                <div class="pf-card__meta">
+                    <span class="pf-card__meta-cat">Motion Design</span>
+                    <h3 class="pf-card__meta-title">Blender: Through The Hoops</h3>
+                </div>
+            </div>
+
+            <!-- Project 9 -->
+            <div class="pf-card" data-category="motion">
+                <div class="pf-card__img">
+                    <img src="assets/Websters logo.png" alt="Stop Motion Teleport">
+                    <div class="pf-card__overlay">
+                        <span class="pf-card__overlay-cat">Motion Design</span>
+                        <h3 class="pf-card__overlay-title">Stop Motion: Teleport</h3>
+                        <p class="pf-card__overlay-desc">Een creatieve stop motion animatie productie.</p>
+                        <a href="project9.html" class="pf-card__overlay-btn">Case Study ↗</a>
+                    </div>
+                </div>
+                <div class="pf-card__meta">
+                    <span class="pf-card__meta-cat">Motion Design</span>
+                    <h3 class="pf-card__meta-title">Stop Motion: Teleport</h3>
+                </div>
+            </div>
+
         </div>
-        <div class="portfolio-content">
-          <span class="category">Branding</span>
-          <h3>Brand Guideline Ahiska</h3>
-          <p>Het ontwerpen van een gestandaardiseerde operationele flow voor het brandingproces bij Websters.</p>
-          <a href="project3.html" class="case-btn">Case Study →</a>
-        </div>
-      </div>
-      <!-- Project 4 -->
-      <div class="portfolio-card" data-category="webdesign">
-      <div class="img-wrapper">
-          <img src="assets/Websters logo.png" alt="Websters logo">
-        </div>
-        <div class="portfolio-content">
-          <span class="category">Webdesign</span>
-          <h3>Website Pieter's Hofke</h3>
-          <p>Het ontwerpen van een gestandaardiseerde operationele flow voor het brandingproces bij Websters.</p>
-          <a href="project4.html" class="case-btn">Case Study →</a>
-        </div>
-      </div>
-      <!-- Project 5 -->
-      <div class="portfolio-card" data-category="webdesign">
-      <div class="img-wrapper">
-          <img src="assets/Websters logo.png" alt="Websters logo">
-        </div>
-        <div class="portfolio-content">
-          <span class="category">Webdesign</span>
-          <h3>Website Rein4ced</h3>
-          <p>Het ontwerpen van een gestandaardiseerde operationele flow voor het brandingproces bij Websters.</p>
-          <a href="project5.html" class="case-btn">Case Study →</a>
-        </div>
-      </div>
-      <!-- Project 6 -->
-      <div class="portfolio-card" data-category="branding">
-      <div class="img-wrapper">
-          <img src="assets/Websters logo.png" alt="Websters logo">
-        </div>
-        <div class="portfolio-content">
-          <span class="category">User Interface</span>
-          <h3>Designsysteem WeShare</h3>
-          <p>Het ontwerpen van een gestandaardiseerde operationele flow voor het brandingproces bij Websters.</p>
-          <a href="project6.html" class="case-btn">Case Study →</a>
-        </div>
-      </div>
-      <!-- Project 7 -->
-      <div class="portfolio-card" data-category="motion">
-      <div class="img-wrapper">
-          <img src="assets/Websters logo.png" alt="Websters logo">
-        </div>
-        <div class="portfolio-content">
-          <span class="category">Motion Design</span>
-          <h3>After Effects: Music Match</h3>
-          <p>Het ontwerpen van een gestandaardiseerde operationele flow voor het brandingproces bij Websters.</p>
-          <a href="project7.html" class="case-btn">Case Study →</a>
-        </div>
-      </div>
-      <!-- Project 8 -->
-      <div class="portfolio-card" data-category="motion">
-        <div class="img-wrapper">
-          <img src="assets/Websters logo.png" alt="Websters logo">
-        </div>
-        <div class="portfolio-content">
-          <span class="category">Motion Design</span>
-          <h3>Blender: Through The Hoops</h3>
-          <p>Het ontwerpen van een gestandaardiseerde operationele flow voor het brandingproces bij Websters.</p>
-          <a href="project8.html" class="case-btn">Case Study →</a>
-        </div>
-      </div>
-      <!-- Project 9 -->
-      <div class="portfolio-card" data-category="motion">
-      <div class="img-wrapper">
-          <img src="assets/Websters logo.png" alt="Websters logo">
-        </div>
-        <div class="portfolio-content">
-          <span class="category">Motion Design</span>
-          <h3>Stop Motion: Teleport</h3>
-          <p>Het ontwerpen van een gestandaardiseerde operationele flow voor het brandingproces bij Websters.</p>
-          <a href="project9.html" class="case-btn">Case Study →</a>
-        </div>
-      </div>
-      </div>
-  </div>
+
+        <p class="pf-count" id="pfCount"><span>9</span> projecten</p>
+
+    </div>
 </section>
 <!-- Scroll to Top Button -->
 <button id="scrollToTopBtn" title="Ga naar boven">
@@ -239,8 +346,8 @@
       <h4>✦ Snelle links</h4>
       <ul>
         <li><a href="index.html">Home</a></li>
-        <li><a href="diensten.html">Diensten</a></li>
-        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="index.html#diensten">Diensten</a></li>
+        <li><a href="index.html#portfolio">Portfolio</a></li>
         <li><a href="overons.html">Over mij</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
@@ -248,11 +355,11 @@
     <div class="footer-col">
       <h4>✦ Diensten</h4>
       <ul>
-        <li><a href="diensten.html">Design</a></li>
-        <li><a href="diensten.html">Branding</a></li>
-        <li><a href="diensten.html">Websites</a></li>
-        <li><a href="diensten.html">UI/UX Design</a></li>
-        <li><a href="diensten.html">Content & Visuals</a></li>
+        <li><a href="index.html#diensten">Design</a></li>
+        <li><a href="index.html#diensten">Branding</a></li>
+        <li><a href="index.html#diensten">Websites</a></li>
+        <li><a href="index.html#diensten">UI/UX Design</a></li>
+        <li><a href="index.html#diensten">Content & Visuals</a></li>
       </ul>
     </div>
     <div class="footer-col">
@@ -267,7 +374,7 @@
       <ul>
         <li><a href="mailto:info.pekrdesign@gmail.com">info.pekrdesign@gmail.com</a></li>
         <li><a href="tel:+32487260092">+32 487 26 00 92</a></li>
-        <li><a href="https://maps.app.goo.gl/8o1Ew4Xv4fMwSfNw9">Gevestigd in België</a></li>
+        <li><a href="https://maps.app.goo.gl/8o1Ew4Xv4fMwSfNw9">Gevestigd in Heusden-Zolder</a></li>
       </ul>
     </div>
   </div>
@@ -278,7 +385,7 @@
   <div class="footer-divider"></div>
   <!-- Legal -->
   <div class="footer-legal">
-    <p>&copy; 2026 PEKR — Alle rechten voorbehouden</p>
+    <p>&copy; 2026 PEKR - Alle rechten voorbehouden</p>
     <div class="footer-links">
       <a href="#">Privacybeleid</a>
       <a href="#">Gebruiksvoorwaarden</a>

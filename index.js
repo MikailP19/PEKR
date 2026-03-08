@@ -207,50 +207,51 @@ function initCursor() {
 
 function initPortfolioFilter() {
 
-    const filterButtons = document.querySelectorAll(".filter-btn");
-    const portfolioCards = document.querySelectorAll(".portfolio-card");
+    // Ondersteunt zowel oude class-namen (index) als nieuwe (portfolio pagina)
+    const filterBtns  = document.querySelectorAll('.pf-filter__btn, .filter-btn');
+    const pfCards     = document.querySelectorAll('.pf-card, .portfolio-card');
+    const pfCount     = document.getElementById('pfCount');
+    const ANIM_MS     = 350;
 
-    if (!filterButtons.length || !portfolioCards.length) return;
+    if (!filterBtns.length || !pfCards.length) return;
 
-    filterButtons.forEach(button => {
+    filterBtns.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            filterBtns.forEach(function(b) { b.classList.remove('active'); });
+            btn.classList.add('active');
 
-        button.addEventListener("click", () => {
+            var filter  = btn.getAttribute('data-filter');
+            var visible = 0;
 
-            filterButtons.forEach(btn => btn.classList.remove("active"));
-            button.classList.add("active");
+            pfCards.forEach(function(card) {
+                var match = filter === 'all' || card.getAttribute('data-category') === filter;
 
-            const filterValue = button.getAttribute("data-filter");
-
-            portfolioCards.forEach(card => {
-
-                const category = card.getAttribute("data-category");
-
-                if (filterValue === "all" || category === filterValue) {
-
-                    // Eerst display terugzetten
-                    card.classList.remove("is-hidden");
-
-                    // Force reflow zodat animatie werkt
+                if (match) {
+                    visible++;
+                    card.classList.remove('is-hidden');
+                    card.classList.remove('is-hiding');
                     void card.offsetWidth;
-
-                    card.classList.remove("is-hiding");
-
+                    card.classList.add('is-showing');
+                    setTimeout(function() { card.classList.remove('is-showing'); }, ANIM_MS + 10);
                 } else {
-
-                    // Eerst fade out
-                    card.classList.add("is-hiding");
-
-                    // Na animatie volledig verwijderen uit layout
-                    setTimeout(() => {
-                        card.classList.add("is-hidden");
-                    }, 400);
-
+                    card.classList.remove('is-showing');
+                    card.classList.add('is-hiding');
+                    setTimeout(function() {
+                        card.classList.add('is-hidden');
+                        card.classList.remove('is-hiding');
+                    }, ANIM_MS);
                 }
-
             });
 
+            if (pfCount) {
+                setTimeout(function() {
+                    var label = filter === 'all'
+                        ? 'projecten'
+                        : btn.textContent.trim().toLowerCase() + ' projecten';
+                    pfCount.innerHTML = '<span>' + visible + '</span> ' + label;
+                }, ANIM_MS + 20);
+            }
         });
-
     });
 }
 
