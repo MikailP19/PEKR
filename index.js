@@ -236,15 +236,18 @@ function initPortfolioFilter() {
 /* een carrousel met pijlen. */
 /* ========================= */
 function initVisualGallery() {
-    document.querySelectorAll('.case-visual__img').forEach(function (gallery) {
-        var imgs = Array.from(gallery.querySelectorAll('img'));
-        if (imgs.length <= 1) return;
+    document.querySelectorAll('.case-visual__img, .case-step__img').forEach(function (gallery) {
+        var items = Array.from(gallery.querySelectorAll('img, video'));
+        if (!items.length) return;
 
         var current = 0;
-        var total   = imgs.length;
+        var total   = items.length;
 
-        // Eerste afbeelding actief
-        imgs[0].classList.add('active');
+        // Eerste item altijd actief
+        items[0].classList.add('active');
+
+        // Bij één item: geen pijlen nodig
+        if (total <= 1) return;
 
         // Pijlen aanmaken
         var prev = document.createElement('button');
@@ -266,21 +269,31 @@ function initVisualGallery() {
         gallery.appendChild(counter);
 
         function goTo(index) {
-            imgs[current].classList.remove('active');
+            var leaving = items[current];
+            leaving.classList.remove('active');
+            // Pauzeer video bij weggaan
+            if (leaving.tagName === 'VIDEO') leaving.pause();
+
             current = (index + total) % total;
-            imgs[current].classList.add('active');
+
+            var arriving = items[current];
+            arriving.classList.add('active');
+            // Speel video af bij aankomen
+            if (arriving.tagName === 'VIDEO') arriving.play();
+
             counter.innerHTML = '<span class="case-visual__counter-current">' + (current + 1) + '</span> / ' + total;
         }
 
         prev.addEventListener('click', function () { goTo(current - 1); });
         next.addEventListener('click', function () { goTo(current + 1); });
 
-        // Touch / swipe
+        // Touch / swipe (niet op video's om scrubben te voorkomen)
         var startX = 0;
         gallery.addEventListener('touchstart', function (e) {
-            startX = e.touches[0].clientX;
+            if (e.target.tagName !== 'VIDEO') startX = e.touches[0].clientX;
         }, { passive: true });
         gallery.addEventListener('touchend', function (e) {
+            if (e.target.tagName === 'VIDEO') return;
             var diff = startX - e.changedTouches[0].clientX;
             if (Math.abs(diff) > 50) goTo(diff > 0 ? current + 1 : current - 1);
         }, { passive: true });

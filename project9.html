@@ -8,7 +8,8 @@
     <script defer src="index.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="case-page">
+
 <!-- Navbar -->
 <header class="navbar">
     <div class="container">
@@ -17,117 +18,263 @@
                 <img src="assets/MainLogoWit.png" alt="PEKR Main Logo" class="logo-img">
             </a>
         </div>
-        <!--<nav>
-            <ul>
-                <li><a href="diensten.html">Diensten</a></li>
-                <li><a href="overons.html">Over ons</a></li>
-                <li><a href="portfolio.html">Portfolio</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>-->
-        <!-- NIEUW: Menu button -->
-        <div class="menu-btn" onclick="toggleMenu()">Menu</div>
+        <div class="menu-btn" onclick="toggleMenu()">
+            <span>Menu</span>
+            <div class="menu-btn-icon">
+                <span></span>
+                <span></span>
+            </div>
+        </div>
     </div>
 </header>
-
-<!-- NIEUW: Overlay-menu -->
 <div class="overlay-menu" id="overlayMenu">
     <div class="top-bar">
-        <span class="logo">PEKR®</span>
-        <span class="tagline">Grafisch ontwerp studio</span>
-        <button class="close-btn" onclick="toggleMenu()">Close</button>
+        <div class="overlay-brand">
+            <span class="overlay-logo">PEKR®</span>
+            <span class="overlay-tagline">Grafisch Ontwerp Studio</span>
+        </div>
+        <button class="close-btn" onclick="toggleMenu()">✕ Sluiten</button>
     </div>
-
     <nav class="menu-links">
-        <a href="index.html" class="rotated">Home</a>
-        <a href="diensten.html" class="rotated">Diensten</a>
-        <a href="portfolio.html" class="rotated">Portfolio</a>
-        <a href="overons.html" class="rotated">Over mij</a>
-        <a href="contact.html" class="rotated">Contact</a>
+        <a href="index.html">
+            <span class="link-number">✦</span>
+            <span class="link-label">Home</span>
+            <span class="link-arrow">↗</span>
+        </a>
+        <a href="index.html#diensten">
+            <span class="link-number">✦</span>
+            <span class="link-label">Diensten</span>
+            <span class="link-arrow">↗</span>
+        </a>
+        <a href="portfolio.html">
+            <span class="link-number">✦</span>
+            <span class="link-label">Portfolio</span>
+            <span class="link-arrow">↗</span>
+        </a>
+        <a href="overons.html">
+            <span class="link-number">✦</span>
+            <span class="link-label">Over mij</span>
+            <span class="link-arrow">↗</span>
+        </a>
+        <a href="contact.html">
+            <span class="link-number">✦</span>
+            <span class="link-label">Contact</span>
+            <span class="link-arrow">↗</span>
+        </a>
     </nav>
-
     <div class="bottom-buttons">
         <a class="cta" href="contact.html">Gratis kennismaking</a>
     </div>
 </div>
+!-- HERO -->
+<section class="case-hero">
+    <div class="case-hero__bg"></div>
+    <div class="case-hero__glow"></div>
+    <div class="case-hero__glow2"></div>
 
-<section class="case-hero case-weshare">
-    <div class="case-hero-inner">
-        <h1>Stop Motion: Teleport</h1>
+    <div class="case-hero__inner">
+
+        <nav class="case-hero__breadcrumb" aria-label="Breadcrumb">
+            <a href="index.html">Home</a>
+            <span aria-hidden="true">/</span>
+            <a href="portfolio.html">Portfolio</a>
+            <span aria-hidden="true">/</span>
+            <span class="case-hero__breadcrumb-current">Stop Motion Teleport</span>
+        </nav>
+
+        <p class="case-hero__cat">
+            <span class="case-hero__cat-dot"></span>
+            Stop Motion
+        </p>
+
+        <h1 class="case-hero__title">
+            Stop Motion<br>
+            <em>Teleport</em>
+        </h1>
+
+        <div class="case-hero__meta">
+            <div class="case-hero__meta-item">
+                <span class="case-hero__meta-label">Klant</span>
+                <span class="case-hero__meta-value">Mezelf</span>
+            </div>
+            <div class="case-hero__meta-item">
+                <span class="case-hero__meta-label">Discipline</span>
+                <span class="case-hero__meta-value">Stop Motion</span>
+            </div>
+            <div class="case-hero__meta-item">
+                <span class="case-hero__meta-label">Jaar</span>
+                <span class="case-hero__meta-value">2025</span>
+            </div>
+        </div>
+
     </div>
 </section>
 
+<!-- ============================================================
+     INTRO
+============================================================ -->
+<section class="case-intro">
+    <div class="case-intro__inner">
 
-<section class="case-content">
-    <div class="case-text">
-        <h2>De Uitdaging</h2>
-        <p>Nova needed a brand identity that felt innovative, trustworthy and scalable.</p>
+        <div class="case-intro__left reveal">
+            <p class="case-intro__eyebrow">
+                <span class="eyebrow-dot"></span>
+                De uitdaging
+            </p>
+            <h2 class="case-intro__title">Van <em>klank</em> naar <em>beeld:</em> Een Ritmische Animatie Creëren</h2>
+            <p class="case-intro__text">
+                De uitdaging was om een animatie te maken die volledig is afgestemd op een bestaand muziekstuk.
+                Ik moest de muziek als leidraad gebruiken en key moments zoals crescendos, percussie en tempoveranderingen
+                visualiseren. Tegelijkertijd moest ik werken met een beperkt kleurenpalet en eenvoudige vormen,
+                terwijl de animatie zowel creatief als technisch correct moest zijn.
+            </p>
+        </div>
 
-        <h2>Het Proces</h2>
-        <p>Research, moodboards, typography exploration and logo iterations.</p>
+        <div class="case-intro__right reveal reveal-delay-2">
+            <div class="case-info-block">
+                <span class="case-info-block__label">Diensten</span>
+                <span class="case-info-block__value">Stop Motion</span>
+            </div>
+            <div class="case-info-block">
+                <span class="case-info-block__label">Sector</span>
+                <span class="case-info-block__value">Motion</span>
+            </div>
+            <div class="case-info-block">
+                <span class="case-info-block__label">Locatie</span>
+                <span class="case-info-block__value">Heusden-Zolder (België)</span>
+            </div>
+        </div>
 
-        <h2>Het Resultaat</h2>
-        <p>A bold identity system ready for digital and print.</p>
-    </div>
-    <div class="case-images">
-        <img src="assets/Mikail%20Peker.jpg">
     </div>
 </section>
 
+<!-- ============================================================
+     HOOFD AFBEELDING
+============================================================ -->
+<section class="case-visual">
+    <div class="case-visual__inner reveal">
+        <div class="case-visual__img">
+            <video controls playsinline>
+                <source src="assets/PekerMikailvanderHoningMartijn-StopMotion.mp4" type="video/mp4">
+            </video>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================================
+     RESULTATEN
+============================================================ -->
+<section class="case-results">
+    <div class="case-results__inner">
+
+        <div class="case-results__header reveal">
+            <p class="case-results__eyebrow">
+                <span class="eyebrow-dot"></span>
+                Het resultaat
+            </p>
+            <h2 class="case-results__title">Wat het<br><em>opleverde</em></h2>
+        </div>
+
+        <div class="case-results__grid">
+            <div class="case-result-card reveal reveal-delay-1">
+                <div class="case-result-card__icon"><i class="fas fa-music" aria-hidden="true"></i></div>
+                <div class="case-result-card__title">100% afgestemd op audio</div>
+                <div class="case-result-card__desc">De animatie volgt nauwkeurig de dynamiek van het muziekstuk, met visuele pieken en dalen die de beats en crescendos benadrukken.</div>
+            </div>
+            <div class="case-result-card reveal reveal-delay-2">
+                <div class="case-result-card__icon"><i class="fas fa-film" aria-hidden="true"></i></div>
+                <div class="case-result-card__title">HD-resolutie & vloeiende beelden</div>
+                <div class="case-result-card__desc">Volledige HD (1920x1080) en 30 fps voor een vloeiende kijkervaring.</div>
+            </div>
+            <div class="case-result-card reveal reveal-delay-3">
+                <div class="case-result-card__icon"><i class="fas fa-shapes" aria-hidden="true"></i></div>
+                <div class="case-result-card__title">Creatief en interactief design</div>
+                <div class="case-result-card__desc">Simpele vormen zoals cirkels, driehoeken en rechthoeken bewegen en reageren op elkaar, waardoor een levendige en dynamische compositie ontstaat.</div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- ============================================================
+     VOLGENDE PROJECT
+============================================================ -->
+<div class="case-next">
+    <div class="case-next__inner">
+        <a href="portfolio.html" class="case-next__back">
+            <i class="fas fa-arrow-left" aria-hidden="true"></i> Terug naar portfolio
+        </a>
+        <a href="project5.html" class="case-next__link">
+            <span class="case-next__label">Volgend project</span>
+            <span class="case-next__title">Blender: Through The Hoops</span>
+        </a>
+    </div>
+</div>
 <!-- Scroll to Top Button -->
 <button id="scrollToTopBtn" title="Ga naar boven">
     <i class="fas fa-arrow-up"></i>
 </button>
-
 <!-- Footer -->
 <footer class="custom-footer">
+    <!-- Bovenste CTA balk -->
+    <div class="footer-cta">
+        <div class="footer-cta-inner">
+            <p class="footer-cta-label">✦ Klaar om te starten?</p>
+            <h2>Laten we iets <em>moois</em> bouwen.</h2>
+        </div>
+        <a href="contact.html" class="footer-cta-btn">Neem contact op</a>
+    </div>
+    <div class="footer-divider"></div>
+    <!-- Kolommen -->
     <div class="footer-top">
         <div class="footer-col">
-            <h4><span>✦</span> Snelle links</h4>
+            <h4>✦ Snelle links</h4>
             <ul>
                 <li><a href="index.html">Home</a></li>
-                <li><a href="diensten.html">Diensten</a></li>
-                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="index.html#diensten">Diensten</a></li>
+                <li><a href="index.html#portfolio">Portfolio</a></li>
                 <li><a href="overons.html">Over mij</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
         </div>
         <div class="footer-col">
-            <h4><span>✦</span> Diensten</h4>
+            <h4>✦ Diensten</h4>
             <ul>
-                <li><a href="diensten.html">Design</a></li>
-                <li><a href="diensten.html">Branding</a></li>
-                <li><a href="diensten.html">Websites</a></li>
-                <li><a href="diensten.html">UI/UX Design</a></li>
-                <li><a href="diensten.html">Content & Visuals</a></li>
+                <li><a href="index.html#diensten">Design</a></li>
+                <li><a href="index.html#diensten">Branding</a></li>
+                <li><a href="index.html#diensten">Websites</a></li>
+                <li><a href="index.html#diensten">UI/UX Design</a></li>
+                <li><a href="index.html#diensten">Content & Visuals</a></li>
             </ul>
         </div>
         <div class="footer-col">
-            <h4><span>✦</span> Socials</h4>
+            <h4>✦ Socials</h4>
             <ul>
                 <li><a href="https://www.instagram.com/pekrdesign" target="_blank">Instagram</a></li>
                 <li><a href="https://www.linkedin.com/in/mikail-peker-b15944195/" target="_blank">LinkedIn</a></li>
             </ul>
         </div>
         <div class="footer-col">
-            <h4><span>✦</span> Contact</h4>
+            <h4>✦ Contact</h4>
             <ul>
                 <li><a href="mailto:info.pekrdesign@gmail.com">info.pekrdesign@gmail.com</a></li>
                 <li><a href="tel:+32487260092">+32 487 26 00 92</a></li>
-                <li><a href="https://maps.app.goo.gl/8o1Ew4Xv4fMwSfNw9">Gevestigd in België</a></li>
+                <li><a href="https://maps.app.goo.gl/8o1Ew4Xv4fMwSfNw9">Gevestigd in Heusden-Zolder</a></li>
             </ul>
         </div>
     </div>
+    <!-- Logo -->
     <div class="footer-logo-big">
         <img src="assets/MainLogoWit.png" alt="PEKR Logo">
     </div>
+    <div class="footer-divider"></div>
+    <!-- Legal -->
     <div class="footer-legal">
-        <p>&copy; 2026 PEKR — Alle rechten voorbehouden</p>
+        <p>&copy; 2026 PEKR - Alle rechten voorbehouden</p>
         <div class="footer-links">
             <a href="#">Privacybeleid</a>
             <a href="#">Gebruiksvoorwaarden</a>
-            <a href="#">Cookiebeleid
-            </a>
+            <a href="#">Cookiebeleid</a>
         </div>
     </div>
 </footer>

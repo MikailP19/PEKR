@@ -918,6 +918,9 @@ body {
     text-transform: uppercase;
     letter-spacing: 1.5px;
 }
+.diensten-header h2 em {
+    color: blueviolet;
+}
 .diensten-header > p:last-child {
     color: #515151;
 }
@@ -2952,16 +2955,26 @@ body.case-page {
     background: rgba(255,255,255,0.03);
 }
 
-/* Alle afbeeldingen verborgen, enkel .active zichtbaar */
-.case-visual__img img {
+/* Alle media verborgen, enkel .active zichtbaar */
+.case-visual__img img,
+.case-visual__img video,
+.case-step__img img,
+.case-step__img video {
     width: 100%;
     height: auto;
     display: none;
     transition: transform 0.6s ease;
 }
 
-.case-visual__img img.active {
+.case-visual__img img.active,
+.case-visual__img video.active,
+.case-step__img img.active,
+.case-step__img video.active {
     display: block;
+}
+
+.case-visual__img video {
+    object-fit: cover;
 }
 
 .case-visual__img img.active:hover { transform: scale(1.02); }
@@ -3068,7 +3081,7 @@ body.case-page {
 
 /* Omgekeerde volgorde via order — GEEN direction:rtl */
 .case-step--reverse .case-step__content { order: 2; }
-.case-step--reverse .case-step__img { order: 1; }
+.case-step--reverse .case-step__placeholder { order: 1; }
 
 .case-step__number {
     display: block;
@@ -3102,40 +3115,44 @@ body.case-page {
     margin: 0;
 }
 
+.case-step__placeholder {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    background: rgba(255,255,255,0.03);
+    border-radius: 16px;
+    border: 1px solid rgba(255,255,255,0.07);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 5rem;
+    color: rgba(255,255,255,0.05);
+    transition: border-color 0.3s ease;
+}
+
+.case-step__placeholder:hover { border-color: rgba(173,255,47,0.1); }
+
+/* Afbeelding variant (enkelvoudig of carrousel) */
 .case-step__img {
+    position: relative;
     border-radius: 16px;
     overflow: hidden;
     border: 1px solid rgba(255,255,255,0.08);
     background: rgba(255,255,255,0.03);
 }
+
 .case-step__img img {
     width: 100%;
-    height: 100%;
+    height: auto;
     object-fit: cover;
-    display: block;
+    display: none;
     transition: transform 0.6s ease;
 }
 
-.case-step__img:hover img {
-    transform: scale(1.03);
-}
-
-/* Echte afbeelding variant (optioneel) */
-.case-step__visual {
-    border-radius: 16px;
-    overflow: hidden;
-    border: 1px solid rgba(255,255,255,0.08);
-}
-
-.case-step__visual img {
-    width: 100%;
-    height: 320px;
-    object-fit: cover;
+.case-step__img img.active {
     display: block;
-    transition: transform 0.6s ease;
 }
 
-.case-step__visual:hover img { transform: scale(1.04); }
+.case-step__img img.active:hover { transform: scale(1.03); }
 
 /* ============================================================
    RESULTATEN
@@ -3440,7 +3457,7 @@ body.case-page {
 
     /* Reset order op tablet */
     .case-step--reverse .case-step__content,
-    .case-step--reverse .case-step__img {
+    .case-step--reverse .case-step__placeholder {
         order: 0;
     }
 
@@ -3512,11 +3529,11 @@ body.case-page {
     }
 
     .case-step--reverse .case-step__content,
-    .case-step--reverse .case-step__img {
+    .case-step--reverse .case-step__placeholder {
         order: 0;
     }
 
-    .case-step__img {
+    .case-step__placeholder {
         aspect-ratio: 16 / 9;
         font-size: 3rem;
     }
