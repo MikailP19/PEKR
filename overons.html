@@ -71,131 +71,209 @@
     <i class="fas fa-arrow-up"></i>
 </button>
 
-<!-- ABOUT HERO -->
-<section class="about-hero">
-    <canvas class="hero-canvas"></canvas>
-    <div class="about-hero-inner">
-        <h1>OVER MIJ <span>✦</span></h1>
-        <p>Ik breng ideeën tot leven met doordacht design en oog voor detail.</p>
-    </div>
-</section>
-<section class="about-section">
-    <div class="about-container">
-        <div class="about-image">
-            <img src="assets/Mikail%20Peker.jpg" alt="Mikail Peker">
-        </div>
-        <div class="about-content">
-            <p class="about-subtitle"><i>Grafisch ontwerper & digitale creator</i></p>
-            <!--<p>
-                Ik help merken groeien via strategisch design, branding en digitale
-                oplossingen. Mijn aanpak combineert creativiteit met structuur,
-                zodat elk project niet alleen mooi oogt, maar ook resultaat oplevert.
-            </p>-->
-            <p>
-                Mijn naam is <strong>Mikail Peker</strong>, afgestudeerd in Digitale Vormgeving aan Hogeschool PXL in Hasselt.
-                Met een sterke passie voor design en visuele communicatie werk ik dagelijks aan het creëren van
-                doordachte en aantrekkelijke ontwerpen. Ik voel me helemaal in mijn element wanneer ik ideeën tot leven
-                kan brengen, zowel in functionele interfaces als in krachtige visuele identiteiten.
-            </p>
-            <p>
-                Naast het ontwerpen van wireframes en digitale schermen in Figma, heb ik ook een grote affiniteit met
-                branding. Van het ontwikkelen van logo’s en huisstijlen tot het vormgeven van posters, social media
-                visuals en andere merkuitingen. Ik zorg ervoor dat elk ontwerp visueel consistent en doelgericht is.
-                Ik hou ervan om merken een eigen gezicht te geven en werk graag aan gerichte campagnes die opvallen
-                in de digitale wereld.
-            </p>
-            <p>
-                Ook op het vlak van digitale marketing denk ik graag strategisch mee. Ik werk mee aan campagnes met oog
-                voor doelgroep, platform en boodschap, waarbij ik het visuele luik vertaal naar sterke content.
-                Tools zoals Adobe Illustrator, Photoshop en After Effects helpen mij daarbij om creatieve en impactvolle
-                visuals te maken, of het nu gaat om statische beelden of korte animaties.
-            </p>
-            <p>
-                Voordat ik aan mijn creatieve reis begon, behaalde ik met onderscheiding mijn diploma in
-                Accounting Administration. Deze achtergrond heeft me een analytische blik, nauwkeurigheid en een
-                professionele werkhouding meegegeven en de eigenschappen die ik vandaag nog steeds inzet in elk
-                designproject.
-            </p>
-            <p>
-                Met mijn mix van technische skills, creatieve flair en een strategisch inzicht wil ik als jonge designer
-                bijdragen aan digitale oplossingen die zowel mooi als functioneel zijn.
-            </p>
+<!-- ============================================================
+     ABOUT HERO — zelfde structuur als portfolio hero
+============================================================ -->
+<section class="pf-hero">
+    <div class="pf-hero__grid"></div>
+    <div class="pf-hero__glow-top"></div>
+    <div class="pf-hero__glow-br"></div>
 
-            <a href="assets/CV%20Mikail%20Peker%20UPDATED.pdf" class="about-btn" target="_blank">
-                <i class="fa-solid fa-download"></i> Download CV
-            </a>
-        </div>
+    <div class="pf-hero__inner">
+        <p class="pf-hero__eyebrow">
+            <span class="pf-hero__eyebrow-dot"></span>
+            Mikail Peker
+            <span class="pf-hero__eyebrow-dot"></span>
+        </p>
+        <h1 class="pf-hero__title">
+            Over Mij <i class="pf-hero__title-star">✦</i>
+        </h1>
+        <p class="pf-hero__sub">
+            Ik breng ideeën tot leven met doordacht design en oog voor detail.
+        </p>
     </div>
-    <!-- Skills -->
-    <div class="skills">
-        <div class="skill">
-            <div class="circle" data-percent="85">
-                <span>85%</span>
-            </div>
-            <p>Figma</p>
-        </div>
-        <div class="skill">
-            <div class="circle" data-percent="80">
-                <span>80%</span>
-            </div>
-            <p>Photoshop</p>
-        </div>
-        <div class="skill">
-            <div class="circle" data-percent="90">
-                <span>90%</span>
-            </div>
-            <p>Illustrator</p>
-        </div>
-        <div class="skill">
-            <div class="circle" data-percent="65">
-                <span>65%</span>
-            </div>
-            <p>After Effects</p>
-        </div>
-        <div class="skill">
-            <div class="circle" data-percent="70">
-                <span>70%</span>
-            </div>
-            <p>Blender</p>
-        </div>
-        <div class="skill">
-            <div class="circle" data-percent="85">
-                <span>85%</span>
-            </div>
-            <p>Wix</p>
-        </div>
-        <div class="skill">
-            <div class="circle" data-percent="85">
-                <span>85%</span>
-            </div>
-            <p>WordPress</p>
+
+    <div class="pf-hero__scroll" onclick="document.getElementById('profiel').scrollIntoView({behavior:'smooth'})">
+        <div class="pf-hero__scroll-line"></div>
+        <span class="pf-hero__scroll-label">Scroll</span>
+    </div>
+
+    <div class="pf-hero__marquee">
+        <div class="pf-hero__marquee-track">
+            <span>Grafisch Ontwerper ✦ UI/UX ✦ Branding ✦ Figma ✦ Illustrator ✦ After Effects ✦ Blender ✦ Webdesign ✦ Motion Design ✦ Visuele Identiteit ✦ Digitale Marketing ✦ Content Creatie ✦ Grafisch Ontwerper ✦ UI/UX ✦ Branding ✦ Figma ✦ Illustrator ✦ After Effects ✦ Blender ✦ Webdesign ✦ Motion Design ✦</span>
         </div>
     </div>
 </section>
-<!--<section class="cta-cinematic">
-    <div class="cta-light"></div>
-    <div class="cta-content">
-        <p class="cta-sub">CONTACT US</p>
-        <h2 class="cta-big">
-            LET'S CREATE<br>
-            TOGETHER
-        </h2>
-        <a href="contact.html" class="cta-btn">
-            <span>Aan de slag</span>
-            <div class="cta-arrow">→</div>
-        </a>
-    </div>
-    <div class="cta-marquee">
-        <div class="cta-track">
-            <span>DESIGN WITH PURPOSE ✦ BRAND ✦ EXPERIENCES ✦ VISUAL STORYTELLING ✦</span>
-            <span>DESIGN WITH PURPOSE ✦ BRAND ✦ EXPERIENCES ✦ VISUAL STORYTELLING ✦</span>
-            <span>DESIGN WITH PURPOSE ✦ BRAND ✦ EXPERIENCES ✦ VISUAL STORYTELLING ✦</span>
-            <span>DESIGN WITH PURPOSE ✦ BRAND ✦ EXPERIENCES ✦ VISUAL STORYTELLING ✦</span>
-            <span>DESIGN WITH PURPOSE ✦ BRAND ✦ EXPERIENCES ✦ VISUAL STORYTELLING ✦</span>
-            <span>DESIGN WITH PURPOSE ✦ BRAND ✦ EXPERIENCES ✦ VISUAL STORYTELLING ✦</span>
+
+<!-- ============================================================
+     STATS BAR — zelfde structuur als portfolio stats
+============================================================ -->
+<div class="pf-stats">
+    <div class="container">
+        <div class="pf-stats__inner">
+            <div class="pf-stats__item">
+                <span class="pf-stats__number">3+</span>
+                <span class="pf-stats__label">Jaar ervaring</span>
+            </div>
+            <div class="pf-stats__item">
+                <span class="pf-stats__number">9+</span>
+                <span class="pf-stats__label">Succesvolle projecten</span>
+            </div>
+            <div class="pf-stats__item">
+                <span class="pf-stats__number">10</span>
+                <span class="pf-stats__label">Tools & software</span>
+            </div>
+            <div class="pf-stats__item">
+                <span class="pf-stats__number">&#8734;</span>
+                <span class="pf-stats__label">Passie voor design</span>
+            </div>
         </div>
     </div>
-</section>-->
+</div>
+
+<!-- ============================================================
+     PROFIEL SECTIE
+============================================================ -->
+<section class="pf-section" id="profiel">
+
+    <div class="pf-section__header container reveal">
+        <p class="pf-section__eyebrow">
+            <span class="eyebrow-dot"></span>
+            Wie ben ik
+        </p>
+        <h2 class="pf-section__title">Creatief <em>&</em> Gedreven</h2>
+        <p class="pf-section__desc">Een grafisch ontwerper met passie voor visuele communicatie en een oog voor detail.</p>
+    </div>
+
+    <div class="about-profile__grid">
+
+        <!-- Links: foto -->
+        <div class="about-profile__left reveal">
+            <div class="about-profile__img-wrap">
+                <img src="assets/Mikail%20Peker.jpg" alt="Mikail Peker">
+                <div class="about-profile__badge">
+                    <div class="about-profile__badge-dot"></div>
+                    <div>
+                        <div class="about-profile__badge-text">Beschikbaar voor projecten</div>
+                        <div class="about-profile__badge-sub">Grafisch ontwerper & digitale creator</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Rechts: tekst -->
+        <div class="about-profile__right">
+
+            <p class="about-profile__label reveal">
+                <span class="eyebrow-dot"></span> Achtergrond
+            </p>
+            <h3 class="about-profile__title reveal">
+                Mikail<br><em>Peker</em>
+            </h3>
+
+            <div class="about-profile__body">
+                <p class="reveal">
+                    Mijn naam is <strong>Mikail</strong>, afgestudeerd in Digitale Vormgeving aan Hogeschool PXL in Hasselt.
+                    Met een sterke passie voor design en visuele communicatie werk ik dagelijks aan het creëren van
+                    doordachte en aantrekkelijke ontwerpen.
+                </p>
+                <p class="reveal">
+                    Naast het ontwerpen van wireframes en digitale schermen in Figma, heb ik ook een grote affiniteit met
+                    branding. Van het ontwikkelen van logo's en huisstijlen tot het vormgeven van posters, social media
+                    visuals en andere merkuitingen.
+                </p>
+                <p class="reveal">
+                    Ook op het vlak van digitale marketing denk ik graag strategisch mee. Tools zoals Adobe Illustrator,
+                    Photoshop en After Effects helpen mij om creatieve en impactvolle visuals te maken, of het nu gaat
+                    om statische beelden of korte animaties.
+                </p>
+                <p class="reveal">
+                    Voordat ik aan mijn creatieve reis begon, behaalde ik met onderscheiding mijn diploma in
+                    Accounting Administration — een achtergrond die mij een analytische blik en nauwkeurigheid meegaf
+                    die ik vandaag nog steeds inzet in elk designproject.
+                </p>
+            </div>
+
+            <a href="assets/CV%20Mikail%20Peker.pdf" class="about-profile__btn reveal" target="_blank">
+                CV downloaden <i class="fa-solid fa-download" aria-hidden="true"></i>
+            </a>
+
+        </div>
+    </div>
+
+</section>
+
+<!-- ============================================================
+     SKILLS SECTIE
+============================================================ -->
+<section class="pf-section pf-section--skills" id="skills">
+
+    <div class="about-skills__header reveal">
+        <div>
+            <p class="pf-section__eyebrow">
+                <span class="eyebrow-dot"></span>
+                Vaardigheden
+            </p>
+            <h2 class="pf-section__title">Mijn <em>Skills</em></h2>
+        </div>
+        <p class="about-skills__sub">Software en tools die ik dagelijks inzet voor design en creatie.</p>
+    </div>
+
+    <div class="about-skills__grid">
+
+        <div class="about-skill-card reveal">
+            <img src="assets/figma-icon.svg" alt="Figma logo">
+            <div class="about-skill-card__name">Figma</div>
+        </div>
+
+        <div class="about-skill-card reveal reveal-delay-1">
+            <img src="assets/adobe-photoshop-2.svg" alt="Photoshop logo">
+            <div class="about-skill-card__name">Photoshop</div>
+        </div>
+
+        <div class="about-skill-card reveal reveal-delay-2">
+            <img src="assets/adobe-illustrator-cc-3.svg" alt="Illustrator logo">
+            <div class="about-skill-card__name">Illustrator</div>
+        </div>
+
+        <div class="about-skill-card reveal reveal-delay-3">
+            <img src="assets/after-effects-1.svg" alt="After Effects logo">
+            <div class="about-skill-card__name">After Effects</div>
+        </div>
+
+        <div class="about-skill-card reveal reveal-delay-1">
+            <img src="assets/blender-2.svg" alt="Blender logo">
+            <div class="about-skill-card__name">Blender</div>
+        </div>
+
+        <div class="about-skill-card reveal reveal-delay-2">
+            <img src="assets/wix-com-website-logo-1.svg" alt="Wix logo">
+            <div class="about-skill-card__name">Wix</div>
+        </div>
+
+        <div class="about-skill-card reveal reveal-delay-3">
+            <img src="assets/wordpress-icon-1.svg" alt="WordPress logo">
+            <div class="about-skill-card__name">WordPress</div>
+        </div>
+
+        <div class="about-skill-card reveal reveal-delay-1">
+            <img src="assets/html-1.svg" alt="HTML logo">
+            <div class="about-skill-card__name">HTML</div>
+        </div>
+
+        <div class="about-skill-card reveal reveal-delay-2">
+            <img src="assets/css-3.svg" alt="CSS logo">
+            <div class="about-skill-card__name">CSS</div>
+        </div>
+
+        <div class="about-skill-card reveal reveal-delay-3">
+            <img src="assets/javascript-1.svg" alt="JavaScript logo">
+            <div class="about-skill-card__name">JavaScript</div>
+        </div>
+
+    </div>
+
+</section>
 <!-- Footer -->
 <footer class="custom-footer">
     <!-- Bovenste CTA balk -->

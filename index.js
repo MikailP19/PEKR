@@ -124,11 +124,29 @@ function initCircles() {
     const circles = document.querySelectorAll(".circle");
     if (!circles.length) return;
 
+    // Zet --percent op 0 zodat de animatie start vanuit leeg
     circles.forEach(circle => {
-        const percent = circle.getAttribute("data-percent");
-        circle.style.setProperty("--percent", percent);
-        const span = circle.querySelector("span");
-        if (span) span.textContent = percent + "%";
+        circle.style.setProperty("--percent", "0");
+    });
+
+    const observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+                const circle  = entry.target;
+                const percent = circle.getAttribute("data-percent");
+                const span    = circle.querySelector("span");
+                // Kleine timeout zodat de transition zichtbaar is
+                setTimeout(function () {
+                    circle.style.setProperty("--percent", percent);
+                    if (span) span.textContent = percent + "%";
+                }, 120);
+                observer.unobserve(circle);
+            }
+        });
+    }, { threshold: 0.3 });
+
+    circles.forEach(function (circle) {
+        observer.observe(circle);
     });
 }
 
@@ -380,127 +398,3 @@ const fadeInObserver = new IntersectionObserver(entries => {
 document.querySelectorAll('.fade-in').forEach(el => {
     fadeInObserver.observe(el);
 });
-
-/* ========================= */
-/* CANVAS HERO (about-pagina) */
-/* Guard: alleen uitvoeren   */
-/* als .hero-canvas bestaat. */
-/* ========================= */
-const canvas = document.querySelector(".hero-canvas");
-
-if (canvas) {
-
-    const ctx = canvas.getContext("2d");
-
-    let mouseX = -9999;
-    let mouseY = -9999;
-    let time   = 0;
-    let DPR    = window.devicePixelRatio || 1;
-
-    function resizeCanvas() {
-        const width  = canvas.offsetWidth;
-        const height = canvas.offsetHeight;
-        canvas.width  = width  * DPR;
-        canvas.height = height * DPR;
-        canvas.style.width  = width  + "px";
-        canvas.style.height = height + "px";
-        ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
-    }
-
-    resizeCanvas();
-    window.addEventListener("resize", resizeCanvas);
-
-    canvas.addEventListener("mousemove", (e) => {
-        const rect = canvas.getBoundingClientRect();
-        mouseX = e.clientX - rect.left;
-        mouseY = e.clientY - rect.top;
-    });
-
-    canvas.addEventListener("mouseleave", () => {
-        mouseX = -9999;
-        mouseY = -9999;
-    });
-
-    function fastNoise(x, y) {
-        return Math.sin(x * 0.004 + time) * 0.5 +
-            Math.cos(y * 0.004 - time) * 0.5;
-    }
-
-    function drawHorizontal(spacing, amplitude, opacity) {
-        ctx.strokeStyle = `rgba(138,43,226,${opacity})`;
-        ctx.lineWidth   = 1.6;
-
-        for (let y = 0; y < canvas.height / DPR; y += spacing) {
-            ctx.beginPath();
-            for (let x = 0; x < canvas.width / DPR; x += 6) {
-                const dx = x - mouseX;
-                const dy = y - mouseY;
-                const dist = dx * dx + dy * dy;
-                const mouseInfluence = dist < 35000 ? (1 - dist / 35000) * amplitude : 0;
-                const wave = fastNoise(x, y) * amplitude + mouseInfluence;
-                ctx.lineTo(x, y + wave);
-            }
-            ctx.stroke();
-        }
-    }
-
-    const particles = [];
-    const PARTICLE_COUNT = 60;
-
-    function createParticles() {
-        particles.length = 0;
-        for (let i = 0; i < PARTICLE_COUNT; i++) {
-            particles.push({
-                x:    Math.random() * canvas.width  / DPR,
-                y:    Math.random() * canvas.height / DPR,
-                vx:   (Math.random() - 0.5) * 0.5,
-                vy:   (Math.random() - 0.5) * 0.5,
-                size: Math.random() * 2 + 0.5
-            });
-        }
-    }
-
-    createParticles();
-    window.addEventListener("resize", createParticles);
-
-    function drawParticles() {
-        for (let p of particles) {
-            const waveOffset = fastNoise(p.x, p.y) * 2;
-            const dx   = p.x - mouseX;
-            const dy   = p.y - mouseY;
-            const dist = dx * dx + dy * dy;
-
-            if (dist < 10000) {
-                p.vx += dx * 0.0002;
-                p.vy += dy * 0.0002;
-            }
-
-            p.x += p.vx;
-            p.y += p.vy + waveOffset * 0.3;
-
-            if (p.x < 0) p.x = canvas.width / DPR;
-            if (p.x > canvas.width  / DPR) p.x = 0;
-            if (p.y < 0) p.y = canvas.height / DPR;
-            if (p.y > canvas.height / DPR) p.y = 0;
-
-            ctx.beginPath();
-            ctx.shadowBlur   = 10;
-            ctx.shadowColor  = "rgba(173,43,226,0.6)";
-            ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-            ctx.fillStyle    = "rgba(255,255,255,0.8)";
-            ctx.fill();
-            ctx.shadowBlur   = 0;
-        }
-    }
-
-    function animateCanvas() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        time += 0.02;
-        drawHorizontal(30, 8,  0.15);
-        drawHorizontal(18, 14, 0.22);
-        drawParticles();
-        requestAnimationFrame(animateCanvas);
-    }
-
-    animateCanvas();
-}
