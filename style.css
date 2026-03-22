@@ -975,7 +975,7 @@ body {
 }
 .waarom-header h2 em {
     font-style: normal;
-    color: greenyellow;
+    color: blueviolet;
 }
 .waarom-header p {
     color: #f9f9f9;
@@ -1000,7 +1000,7 @@ body {
 .eyebrow-dot-waarom {
     width: 6px;
     height: 6px;
-    background: greenyellow;
+    background: blueviolet;
     border-radius: 50%;
     display: inline-block;
     animation: pulse 2s infinite;
@@ -3052,7 +3052,20 @@ body.case-page {
     transition: color 0.2s ease;
 }
 
-.case-next__link:hover .case-next__title { color: greenyellow; }
+.case-next__link:hover .case-next__title {
+    color: greenyellow;
+}
+
+.case-next__nav {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+}
+
+.case-next__link--prev {
+    align-items: flex-end;
+    text-align: right;
+}
 
 /* ============================================================
    SCROLL REVEAL
@@ -3135,6 +3148,16 @@ body.case-page {
     .case-next__inner {
         padding-left: 20px;
         padding-right: 20px;
+    }
+    .case-next__nav {
+        flex-direction: column;
+        gap: 20px;
+        align-items: flex-start;
+    }
+
+    .case-next__link--prev {
+        align-items: flex-start;
+        text-align: left;
     }
 
     .case-hero__title {
