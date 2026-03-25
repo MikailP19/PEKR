@@ -56,24 +56,12 @@ function initMenuHighlight() {
     const links = document.querySelectorAll('.menu-links a');
     if (!links.length) return;
 
-    let currentPage = window.location.pathname.split("/").pop();
-
-    // Fix voor homepage
-    if (currentPage === "" || currentPage === "/") {
-        currentPage = "index.html";
-    }
+    const currentURL = window.location.href;
 
     links.forEach(link => {
-        const href = link.getAttribute("href");
-        if (!href) return;
+        const linkURL = link.href;
 
-        const linkPage = href.split("#")[0] || "index.html";
-
-        // Eerst alles resetten
-        link.classList.remove("active");
-
-        // Exact match
-        if (linkPage === currentPage) {
+        if (currentURL.includes(linkURL)) {
             link.classList.add("active");
         }
     });
