@@ -63,25 +63,17 @@ function initMenuHighlight() {
         currentPage = "index.html";
     }
 
-    // Detecteer project detailpagina's (project1.html, project2.html, ...)
-    const isProjectPage = /^project\d+\.html$/.test(currentPage);
-
     links.forEach(link => {
         const href = link.getAttribute("href");
         if (!href) return;
 
         const linkPage = href.split("#")[0] || "index.html";
 
-        // Reset eerst alles
+        // Eerst alles resetten
         link.classList.remove("active");
 
-        // Exacte match (normale pagina's)
+        // Exact match
         if (linkPage === currentPage) {
-            link.classList.add("active");
-        }
-
-        // Extra: projectpagina → Portfolio actief maken
-        else if (isProjectPage && linkPage === "portfolio.html") {
             link.classList.add("active");
         }
     });
