@@ -39,37 +39,26 @@ function initFadeIn() {
 /* ========================= */
 /* MENU                      */
 /* ========================= */
-function toggleMenu() {
-    const menu = document.getElementById('overlayMenu');
-    if (menu) menu.classList.toggle('active');
-}
-
-// Sluit menu automatisch bij klikken op een link
-document.querySelectorAll('.overlay-menu .menu-links a').forEach(link => {
-    link.addEventListener('click', () => {
-        const menu = document.getElementById('overlayMenu');
-        if (menu) menu.classList.remove('active');
-    });
-});
-
 function initMenuHighlight() {
     const links = document.querySelectorAll('.menu-links a');
     if (!links.length) return;
 
-    const currentURL = window.location.href;
+    const currentPage = window.location.pathname.split("/").pop();
 
     links.forEach(link => {
-        const linkURL = link.href;
+        const linkPage = link.href.split("/").pop();
 
-        if (currentURL.includes(linkURL)) {
+        // Highlight bij exacte match
+        if (currentPage === linkPage) {
+            link.classList.add("active");
+        }
+
+        // Extra: highlight 'Portfolio' bij projectpagina
+        const isProjectPage = /^project\d+\.html$/.test(currentPage);
+        if (isProjectPage && linkPage === "portfolio.html") {
             link.classList.add("active");
         }
     });
-}
-const isProjectPage = /^project\d+\.html$/.test(currentPage);
-
-if (isProjectPage && linkPage === "portfolio.html") {
-    link.classList.add("active");
 }
 
 /* ========================= */
