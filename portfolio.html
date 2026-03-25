@@ -1,41 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&display=swap" rel="stylesheet">
-  <title>Portfolio | PEKR</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <script defer src="index.js"></script>
-  <link rel="stylesheet" href="style.css">
+    <title>Portfolio | PEKR</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script defer src="index.js"></script>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body class="portfolio-page">
 
 <!-- Navbar -->
 <header class="navbar">
-  <div class="container">
-    <div class="logo">
-      <a href="index.html">
-        <img src="assets/MainLogoWit.png" alt="PEKR Main Logo" class="logo-img">
-      </a>
+    <div class="container">
+        <div class="logo">
+            <a href="index.html">
+                <img src="assets/MainLogoWit.png" alt="PEKR Main Logo" class="logo-img">
+            </a>
+        </div>
+        <div class="menu-btn" onclick="toggleMenu()">
+            <span>Menu</span>
+            <div class="menu-btn-icon">
+                <span></span>
+                <span></span>
+            </div>
+        </div>
     </div>
-    <div class="menu-btn" onclick="toggleMenu()">
-      <span>Menu</span>
-      <div class="menu-btn-icon">
-        <span></span>
-        <span></span>
-      </div>
-    </div>
-  </div>
 </header>
 <div class="overlay-menu" id="overlayMenu">
-  <div class="top-bar">
-    <div class="overlay-brand">
-      <span class="overlay-logo">PEKR®</span>
-      <span class="overlay-tagline">Grafisch Ontwerp Studio</span>
+    <div class="top-bar">
+        <div class="overlay-brand">
+            <span class="overlay-logo">PEKR®</span>
+            <span class="overlay-tagline">Grafisch Ontwerp Studio</span>
+        </div>
+        <button class="close-btn" onclick="toggleMenu()">✕ Sluiten</button>
     </div>
-    <button class="close-btn" onclick="toggleMenu()">✕ Sluiten</button>
-  </div>
     <nav class="menu-links">
         <a href="index.html">
             <span class="link-number">✦</span>
@@ -68,9 +68,9 @@
             <span class="link-arrow"><i class="fas fa-arrow-up-right-from-square"></i></span>
         </a>
     </nav>
-  <div class="bottom-buttons">
-    <a class="cta" href="contact.html">Gratis kennismaking</a>
-  </div>
+    <div class="bottom-buttons">
+        <a class="cta" href="contact.html">Gratis kennismaking</a>
+    </div>
 </div>
 <!-- HERO -->
 <section class="pf-hero">
@@ -185,7 +185,7 @@
             <!-- Project 3 -->
             <div class="pf-card" data-category="branding">
                 <div class="pf-card__img">
-                    <img src="assets/Ahiska%20BB.png" alt="Ahiska Brand Guideline">
+                    <img src="assets/ahiska%20logo.webp" alt="Logo Ahiska">
                     <div class="pf-card__overlay">
                         <p class="pf-card__overlay-desc">Het ontwerpen van een volledig brandbook voor Ahiska.</p>
                         <a href="project3.html" class="pf-card__overlay-btn">
@@ -202,7 +202,7 @@
             <!-- Project 4 -->
             <div class="pf-card" data-category="webdesign">
                 <div class="pf-card__img">
-                    <img src="assets/pietershofkewebsite.png" alt="Website Pieter's Hofke">
+                    <img src="assets/pieters%20hofke%20logo-Photoroom.png" alt="Website Pieter's Hofke">
                     <div class="pf-card__overlay">
                         <p class="pf-card__overlay-desc">Het ontwerpen van een volledige website voor Pieter's Hofke.</p>
                         <a href="project4.html" class="pf-card__overlay-btn">
@@ -219,7 +219,7 @@
             <!-- Project 5 -->
             <div class="pf-card" data-category="webdesign">
                 <div class="pf-card__img">
-                    <img src="assets/Mockup%20REIN4CED%20Macbook.png" alt="Website Rein4ced">
+                    <img src="assets/rein4ced%20logo.png" alt="Logo Rein4ced">
                     <div class="pf-card__overlay">
                         <p class="pf-card__overlay-desc">Het ontwerpen van een volledige website voor Rein4ced.</p>
                         <a href="project5.html" class="pf-card__overlay-btn">
@@ -301,79 +301,130 @@
                 </div>
             </div>
 
+            <!-- Project 10 -->
+            <div class="pf-card" data-category="branding">
+                <div class="pf-card__img">
+                    <img src="assets/Hasselt%20heeft%20het%20logo%20wit_lores.png" alt="Logo Stad Hasselt">
+                    <div class="pf-card__overlay">
+                        <p class="pf-card__overlay-desc">Het ontwerpen van social media visuals en Google Ads banners voor Stad Hasselt.</p>
+                        <a href="project10.html" class="pf-card__overlay-btn">
+                            Case Study <i class="fas fa-arrow-up-right-from-square"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="pf-card__meta">
+                    <span class="pf-card__meta-cat">Branding</span>
+                    <h3 class="pf-card__meta-title">Stad Hasselt</h3>
+                </div>
+            </div>
+
+            <!-- Project 11 -->
+            <div class="pf-card" data-category="branding">
+                <div class="pf-card__img">
+                    <img src="assets/Soloya%20logo-Photoroom.png" alt="Logo Soloya">
+                    <div class="pf-card__overlay">
+                        <p class="pf-card__overlay-desc">Het ontwerpen van een flyer voor Soloya.</p>
+                        <a href="project11.html" class="pf-card__overlay-btn">
+                            Case Study <i class="fas fa-arrow-up-right-from-square"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="pf-card__meta">
+                    <span class="pf-card__meta-cat">Branding</span>
+                    <h3 class="pf-card__meta-title">Flyer Soloya</h3>
+                </div>
+            </div>
+
+            <!-- Project 12 -->
+            <div class="pf-card" data-category="branding">
+                <div class="pf-card__img">
+                    <img src="assets/wondernemer_logo2.webp" alt="Logo Wondernemer">
+                    <div class="pf-card__overlay">
+                        <p class="pf-card__overlay-desc">Het ontwerpen van een volledig brandbook en visitekaart voor Wondernemer.</p>
+                        <a href="project12.html" class="pf-card__overlay-btn">
+                            Case Study <i class="fas fa-arrow-up-right-from-square"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="pf-card__meta">
+                    <span class="pf-card__meta-cat">Branding</span>
+                    <h3 class="pf-card__meta-title">Brand Guideline & visitekaart voor Wondernemer</h3>
+                </div>
+            </div>
+
         </div>
 
-        <p class="pf-count" id="pfCount"><span>9</span> projecten</p>
+        <p class="pf-count" id="pfCount"><span>12</span> projecten</p>
 
     </div>
 </section>
 <!-- Scroll to Top Button -->
 <button id="scrollToTopBtn" title="Ga naar boven">
-  <i class="fas fa-arrow-up"></i>
+    <i class="fas fa-arrow-up"></i>
 </button>
 <!-- Footer -->
 <footer class="custom-footer">
-  <!-- Bovenste CTA balk -->
-  <div class="footer-cta">
-    <div class="footer-cta-inner">
-      <p class="footer-cta-label">✦ Klaar om te starten?</p>
-      <h2>Laten we iets <em>moois</em> bouwen.</h2>
+    <!-- Bovenste CTA balk -->
+    <div class="footer-cta">
+        <div class="footer-cta-inner">
+            <p class="footer-cta-label">✦ Klaar om te starten?</p>
+            <h2>Laten we iets <em>moois</em> bouwen.</h2>
+        </div>
+        <a href="contact.html" class="footer-cta-btn">Neem contact op</a>
     </div>
-    <a href="contact.html" class="footer-cta-btn">Neem contact op</a>
-  </div>
-  <div class="footer-divider"></div>
-  <!-- Kolommen -->
-  <div class="footer-top">
-    <div class="footer-col">
-      <h4>✦ Snelle links</h4>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="index.html#diensten">Diensten</a></li>
-        <li><a href="index.html#portfolio">Portfolio</a></li>
-        <li><a href="overons.html">Over mij</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
+    <div class="footer-divider"></div>
+    <!-- Kolommen -->
+    <div class="footer-top">
+        <div class="footer-col">
+            <h4>✦ Snelle links</h4>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#diensten">Diensten</a></li>
+                <li><a href="index.html#portfolio">Portfolio</a></li>
+                <li><a href="overons.html">Over mij</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>✦ Diensten</h4>
+            <ul>
+                <li><a href="index.html#diensten">Design</a></li>
+                <li><a href="index.html#diensten">Branding</a></li>
+                <li><a href="index.html#diensten">Websites</a></li>
+                <li><a href="index.html#diensten">UI/UX Design</a></li>
+                <li><a href="index.html#diensten">Content & Visuals</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>✦ Socials</h4>
+            <ul>
+                <li><a href="https://www.instagram.com/pekrdesign" target="_blank">Instagram</a></li>
+                <li><a href="https://www.linkedin.com/in/mikail-peker-b15944195/" target="_blank">LinkedIn</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>✦ Contact</h4>
+            <ul>
+                <li><a href="mailto:info.pekrdesign@gmail.com">info.pekrdesign@gmail.com</a></li>
+                <li><a href="tel:+32487260092">+32 487 26 00 92</a></li>
+                <li><a href="https://maps.app.goo.gl/8o1Ew4Xv4fMwSfNw9">Gevestigd in België</a></li>
+            </ul>
+        </div>
     </div>
-    <div class="footer-col">
-      <h4>✦ Diensten</h4>
-        <ul>
-            <li><a href="index.html#diensten">Design</a></li>
-            <li><a href="index.html#diensten">Branding</a></li>
-            <li><a href="index.html#diensten">Websites</a></li>
-            <li><a href="index.html#diensten">UI/UX Design</a></li>
-            <li><a href="index.html#diensten">Content & Visuals</a></li>
-        </ul>
+    <!-- Logo -->
+    <div class="footer-logo-big">
+        <img src="assets/MainLogoWit.png" alt="PEKR Logo">
     </div>
-    <div class="footer-col">
-      <h4>✦ Socials</h4>
-      <ul>
-        <li><a href="https://www.instagram.com/pekrdesign" target="_blank">Instagram</a></li>
-        <li><a href="https://www.linkedin.com/in/mikail-peker-b15944195/" target="_blank">LinkedIn</a></li>
-      </ul>
+    <div class="footer-divider"></div>
+    <!-- Legal -->
+    <div class="footer-legal">
+        <p>&copy; 2026 PEKR - Alle rechten voorbehouden</p>
+        <div class="footer-links">
+            <a href="#">Privacybeleid</a>
+            <a href="#">Gebruiksvoorwaarden</a>
+            <a href="#">Cookiebeleid</a>
+        </div>
     </div>
-    <div class="footer-col">
-      <h4>✦ Contact</h4>
-      <ul>
-        <li><a href="mailto:info.pekrdesign@gmail.com">info.pekrdesign@gmail.com</a></li>
-        <li><a href="tel:+32487260092">+32 487 26 00 92</a></li>
-        <li><a href="https://maps.app.goo.gl/8o1Ew4Xv4fMwSfNw9">Gevestigd in België</a></li>
-      </ul>
-    </div>
-  </div>
-  <!-- Logo -->
-  <div class="footer-logo-big">
-    <img src="assets/MainLogoWit.png" alt="PEKR Logo">
-  </div>
-  <div class="footer-divider"></div>
-  <!-- Legal -->
-  <div class="footer-legal">
-    <p>&copy; 2026 PEKR - Alle rechten voorbehouden</p>
-    <div class="footer-links">
-      <a href="#">Privacybeleid</a>
-      <a href="#">Gebruiksvoorwaarden</a>
-      <a href="#">Cookiebeleid</a>
-    </div>
-  </div>
 </footer>
 <div class="cursor-dot"></div>
 </body>
