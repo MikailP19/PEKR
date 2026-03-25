@@ -56,12 +56,32 @@ function initMenuHighlight() {
     const links = document.querySelectorAll('.menu-links a');
     if (!links.length) return;
 
-    const currentURL = window.location.href;
+    let currentPage = window.location.pathname.split("/").pop();
+
+    // Fix voor homepage
+    if (currentPage === "" || currentPage === "/") {
+        currentPage = "index.html";
+    }
+
+    // Detecteer project detailpagina's (project1.html, project2.html, ...)
+    const isProjectPage = /^project\d+\.html$/.test(currentPage);
 
     links.forEach(link => {
-        const linkURL = link.href;
+        const href = link.getAttribute("href");
+        if (!href) return;
 
-        if (currentURL.includes(linkURL)) {
+        const linkPage = href.split("#")[0] || "index.html";
+
+        // Reset eerst alles
+        link.classList.remove("active");
+
+        // Exacte match (normale pagina's)
+        if (linkPage === currentPage) {
+            link.classList.add("active");
+        }
+
+        // Extra: projectpagina → Portfolio actief maken
+        else if (isProjectPage && linkPage === "portfolio.html") {
             link.classList.add("active");
         }
     });
