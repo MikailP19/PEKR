@@ -3598,6 +3598,279 @@ body.case-page {
         stroke-dashoffset: calc(181 - (181 * var(--percent) / 100));
     }
 }
+/* ============================================================
+   TIJDLIJN / PARCOURS
+============================================================ */
+.about-timeline {
+    background: #0e0e0e;
+    padding: 90px 0 130px;
+    position: relative;
+    overflow: hidden;
+    border-top: 1px solid rgba(255,255,255,0.06);
+}
+
+.about-timeline::before {
+    content: '';
+    position: absolute;
+    bottom: -100px;
+    left: -200px;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(ellipse, rgba(138,43,226,0.07) 0%, transparent 65%);
+    pointer-events: none;
+}
+
+.about-timeline__inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    position: relative;
+    z-index: 1;
+}
+
+/* Header */
+.about-timeline__header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 72px;
+}
+
+/* Verticale lijn in het midden */
+.about-timeline__track {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    max-width: 860px;
+    margin: 0 auto;
+}
+
+.about-timeline__track::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: linear-gradient(to bottom, transparent, rgba(173,255,47,0.3) 10%, rgba(173,255,47,0.3) 90%, transparent);
+    transform: translateX(-50%);
+}
+
+/* Enkel item */
+.about-timeline__item {
+    display: grid;
+    grid-template-columns: 1fr 48px 1fr;
+    align-items: start;
+    gap: 0;
+    padding: 0 0 56px;
+}
+
+.about-timeline__item:last-child {
+    padding-bottom: 0;
+}
+
+/* Links content */
+.about-timeline__left {
+    padding-right: 40px;
+    text-align: right;
+}
+
+/* Rechts content */
+.about-timeline__right {
+    padding-left: 40px;
+    text-align: left;
+}
+
+/* Lege kant */
+.about-timeline__left--empty,
+.about-timeline__right--empty {
+    pointer-events: none;
+}
+
+/* Middelste dot */
+.about-timeline__dot {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 4px;
+    position: relative;
+    z-index: 2;
+}
+
+.about-timeline__dot-inner {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: greenyellow;
+    border: 3px solid #0e0e0e;
+    box-shadow: 0 0 0 1px rgba(173,255,47,0.4), 0 0 16px rgba(173,255,47,0.3);
+    flex-shrink: 0;
+}
+
+/* Kaart stijl */
+.about-timeline__card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 18px;
+    padding: 24px 28px;
+    transition: border-color 0.3s ease, transform 0.3s ease;
+}
+
+.about-timeline__card:hover {
+    border-color: rgba(173,255,47,0.2);
+    transform: translateY(-3px);
+}
+
+.about-timeline__year {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: greenyellow;
+    margin-bottom: 10px;
+}
+
+.about-timeline__type {
+    display: inline-block;
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.3);
+    background: rgba(255,255,255,0.06);
+    border-radius: 50px;
+    padding: 3px 10px;
+    margin-left: 8px;
+}
+
+.about-timeline__title {
+    font-size: 1rem;
+    font-weight: 800;
+    color: #f9f9f9;
+    text-transform: uppercase;
+    letter-spacing: -0.2px;
+    margin: 0 0 6px;
+    line-height: 1.2;
+}
+
+.about-timeline__sub {
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.4);
+    margin: 0 0 10px;
+    font-weight: 500;
+}
+
+.about-timeline__desc {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.45);
+    line-height: 1.7;
+    margin: 0;
+}
+
+.about-timeline__tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: greenyellow;
+    margin-top: 10px;
+}
+
+/* ============================================================
+   RESPONSIVE — MOBIEL (max 768px) — alles links uitlijnen
+============================================================ */
+@media (max-width: 768px) {
+
+    .about-timeline__track::before {
+        left: 20px;
+    }
+
+    .about-timeline__item {
+        grid-template-columns: 40px 1fr;
+        grid-template-areas: "dot content";
+        gap: 0 16px;
+        padding-bottom: 40px;
+    }
+
+    .about-timeline__dot {
+        grid-area: dot;
+        padding-top: 6px;
+        justify-content: center;
+    }
+
+    .about-timeline__left,
+    .about-timeline__right {
+        grid-area: content;
+        padding: 0;
+        text-align: left;
+    }
+
+    .about-timeline__left--empty,
+    .about-timeline__right--empty {
+        display: none;
+    }
+
+    /* Verberg lege kolommen op mobiel */
+    .about-timeline__item > *:not(.about-timeline__dot):not(.about-timeline__left):not(.about-timeline__right) {
+        display: none;
+    }
+}
+
+@media (max-width: 575px) {
+    .about-timeline { padding: 64px 0; }
+    .about-timeline__header { margin-bottom: 48px; }
+    .about-timeline__card { padding: 20px 20px; }
+}
+
+/* Sectielabel tussen opleiding en ervaringen */
+.about-timeline__section-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: greenyellow;
+    margin: 56px auto 40px;
+    max-width: 100%;
+    width: 100%;
+    padding: 0 0 16px;
+    border-bottom: 1px solid rgba(173,255,47,0.15);
+}
+
+/* Lijst in tijdlijn kaart */
+.about-timeline__list {
+    list-style: none;
+    padding: 0;
+    margin: 8px 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.about-timeline__list li {
+    font-size: 0.83rem;
+    color: rgba(255,255,255,0.45);
+    line-height: 1.6;
+    padding-left: 14px;
+    position: relative;
+}
+
+.about-timeline__list li::before {
+    content: '✦';
+    position: absolute;
+    left: 0;
+    color: greenyellow;
+    font-size: 0.5rem;
+    top: 5px;
+}
 
 /* ============================================================
    CONTACT.CSS — Contact pagina
